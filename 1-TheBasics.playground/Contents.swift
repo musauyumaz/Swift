@@ -58,3 +58,34 @@ welcomeMessage = "Hello"
 var red, green, blue: Double
 
 // WARNING: Pratikte tip açıklamaları yazmanız nadiren gerekir. Bir sabit veya değişken için tanımlandığı noktada bir başlangıç değeri verirseniz, Swift, Tip Güvenliği ve Tip Çıkarımında açıklandığı gibi, neredeyse her zaman o sabit veya değişken için kullanılacak türü çıkarabilir. Yukarıdaki welcomeMessage örneğinde, başlangıç değeri verilmemiştir ve bu nedenle welcomeMessage değişkeninin türü, başlangıç değerinden çıkarılmak yerine bir tip açıklamasıyla belirtilmiştir.
+
+// MARK: Değişken ve Sabit İsimlendirme
+//Sabit ve değişken isimleri, Unicode karakterleri dahil olmak üzere hemen hemen her karakteri içerebilir:
+let π = 3.14159
+let 你好 = "你好世界"
+let 🐶🐮 = "dogcow"
+
+//Sabit ve değişken adları boşluk karakterleri, matematiksel semboller, oklar, özel kullanım Unicode skaler değerleri veya çizgi ve kutu çizim karakterleri içeremez. Ayrıca, adın başka bir yerinde sayılar bulunabilse de, sayılarla başlayamazlar.
+//Belirli bir türde bir sabit veya değişken bildirdikten sonra, aynı adla tekrar bildiremez veya farklı türde değerleri depolamak için değiştiremezsiniz. Ayrıca, bir sabiti değişkene veya bir değişkeni sabite dönüştüremezsiniz.
+//Bir sabit veya değişkene, ayrılmış bir Swift anahtar sözcüğüyle aynı adı vermek zorunda kalırsanız, anahtar sözcüğü isim olarak kullanırken ters eğik çizgi (`) ile çevreleyin. Ancak, başka seçeneğiniz yoksa anahtar sözcükleri isim olarak kullanmaktan kaçının.
+
+//Mevcut bir değişkenin değerini, uyumlu bir türdeki başka bir değerle değiştirebilirsiniz. Bu örnekte, friendlyWelcome değişkeninin değeri "Hello!"'dan "Bonjour!"'ya değiştirilmiştir:
+var friendlyWelcome = "Hello!"
+friendlyWelcome = "Bonjour!"
+// friendlyWelcome şimdi "Bonjour!"
+
+//Değişkenlerin aksine, sabitlerin değeri ayarlandıktan sonra değiştirilemez. Bunu yapmaya çalışmak, kodunuz derlendiğinde hata olarak bildirilir:
+let languageName = "Swift"
+//languageName = "Swift++"
+// Derleme Zamanı Hatası: languageName Değiştirilemez
+
+// MARK: Sabitleri ve Değişkenleri Yazdırma
+//print(_:separator:terminator:) işleviyle bir sabitin veya değişkenin geçerli değerini yazdırabilirsiniz:
+print(friendlyWelcome)
+// Bonjour! yazacaktır.
+
+//print(_:separator:terminator:) işlevi, bir veya daha fazla değeri uygun bir çıktıya yazdırmak için kullanılan genel bir işlevdir. Örneğin, Xcode'da print(_:separator:terminator:) işlevi, çıktısını Xcode'un "konsol" bölmesinde yazdırır. separator ve terminator parametrelerinin varsayılan değerleri vardır, bu nedenle bu işlevi çağırdığınızda bunları atlayabilirsiniz. Varsayılan olarak, işlev yazdırdığı satırı satır sonu ekleyerek sonlandırır. Bir değeri satır sonu olmadan yazdırmak için, sonlandırıcı olarak boş bir dize geçirin — örneğin, print(someValue, terminator: "").
+
+//Swift, String bir ifade de sabit veya değişken değerini eklemek için string interpolation  kullanır:
+print("The current value of friendlyWelcome is \(friendlyWelcome)")
+// Console'a Yazar: "friendlyWelcome'ın güncel değeri Bonjour!"
