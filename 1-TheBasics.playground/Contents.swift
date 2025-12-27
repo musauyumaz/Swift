@@ -89,3 +89,27 @@ print(friendlyWelcome)
 //Swift, String bir ifade de sabit veya değişken değerini eklemek için string interpolation  kullanır:
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
 // Console'a Yazar: "friendlyWelcome'ın güncel değeri Bonjour!"
+
+// MARK: Yorum Satırları
+//Yorumları, kodunuza çalıştırılamayan metinler eklemek, kendinize not veya hatırlatma olarak kullanmak için kullanın. Yorumlar, kodunuz derlendiğinde Swift derleyicisi tarafından yok sayılır.
+
+//Swift'teki yorumlar, C'deki yorumlara çok benzer. Tek satırlık yorumlar iki eğik çizgi (//) ile başlar:
+// Yorum
+//Çok satırlı yorumlar, eğik çizgi ve ardından yıldız işareti (/*) ile başlar ve yıldız işareti ve ardından eğik çizgi (*/) ile biter:
+/*
+ Bu da bir yorumdur.
+ Ancak birden fazla satıra yayılmıştır.
+ */
+
+//C dilindeki çok satırlı yorumların aksine, Swift dilindeki çok satırlı yorumlar diğer çok satırlı yorumların içine yerleştirilebilir. İç içe geçmiş yorumları, çok satırlı bir yorum bloğu başlatıp ardından ilk blok içinde ikinci bir çok satırlı yorum başlatarak yazabilirsiniz. İkinci blok kapatıldıktan sonra ilk blok kapatılır:
+
+/* Bu, ilk çok satırlı yorumun başlangıcıdır.
+    /* Bu, ikinci, iç içe geçmiş çok satırlı yorumdur. */
+Bu, ilk çok satırlı yorumun sonudur. */
+
+//İç içe geçmiş çok satırlı yorumlar, kod zaten çok satırlı yorumlar içeriyor olsa bile, büyük kod bloklarını hızlı ve kolay bir şekilde yorumlayabilmenizi sağlar.
+
+// MARK: Noktalı Virgül(;)
+///Diğer birçok dilden farklı olarak, Swift kodunuzdaki her ifadenin sonuna noktalı virgül (;) yazmanızı gerektirmez, ancak isterseniz yazabilirsiniz. Ancak, tek bir satıra birden fazla ayrı ifade yazmak istiyorsanız noktalı virgül kullanmanız gerekir:
+let cat = "🐱"; print(cat)
+// 🐱 yazdırır.
