@@ -119,3 +119,23 @@ let cat = "🐱"; print(cat)
 //Integer türleri, adlarında boyutlarını ve işaretlerini içerir. Örneğin, 8 bitlik işaretsiz bir tamsayı UInt8 türündedir ve 32 bitlik işaretli bir tamsayı Int32 türündedir.
 //Çoğu durumda, tam Integer boyutunu belirtmeniz gerekmediğinde, aşağıda açıklanan Int türünü kullanırsınız.
 //Finans veya inşaat gibi düzenlemelere tabi bir alanda veya yüksek hassasiyetli sonuçların beklendiği bir alanda hesaplamalar yapmak için, o alanın gereksinimlerine göre yuvarlama ve kesme gibi davranışları uygulayan özel amaçlı bir sayısal tür gerekebilir.
+
+//MARK: Integer Bounds(Tamsayı Sınırları)
+//Her tamsayı türünün minimum ve maksimum değerlerine, min ve max özellikleriyle erişebilirsiniz:
+let minValue = UInt8.min  // UInt8 minimum değer 0
+let maxValue = UInt8.max  // UInt8 maximum değer 255
+
+//MARK: Int
+//Çoğu durumda, kodunuzda kullanmak için belirli bir tamsayı boyutu seçmenize gerek yoktur. Swift, mevcut platformun yerel kelime boyutu ile aynı boyutta olan ek bir tamsayı türü olan Int sağlar:
+//32 bit platformda Int, Int32 ile aynı boyuttadır.
+//64 bit platformda Int, Int64 ile aynı boyuttadır.
+
+//Belirli bir tamsayı boyutu ile çalışmanız gerekmedikçe, kodunuzda tamsayı değerleri için her zaman Int kullanın. Bu, kod tutarlılığını ve birlikte çalışabilirliği artırır. 32 bit platformlarda bile Int, -2.147.483.648 ile 2.147.483.647 arasındaki herhangi bir değeri depolayabilir ve birçok tamsayı aralığı için yeterince büyüktür.
+
+//MARK: UInt
+//Swift ayrıca, mevcut platformun yerel kelime boyutu ile aynı boyutta olan, işaretsiz bir tamsayı türü olan UInt sağlar:
+//32 bit platformda, UInt, UInt32 ile aynı boyuttadır.
+//64 bit platformda, UInt, UInt64 ile aynı boyuttadır.
+
+//UInt'i yalnızca, platformun yerel kelime boyutu ile aynı boyutta bir işaretsiz tamsayı türüne özellikle ihtiyaç duyduğunuzda kullanın. Bu durum söz konusu değilse, depolanacak değerlerin negatif olmadığı biliniyor olsa bile Int tercih edilir.
+//Tamsayı değerleri için Int'in tutarlı bir şekilde kullanılması, kodların birlikte çalışabilirliğini artırır, farklı sayı türleri arasında dönüştürme ihtiyacını ortadan kaldırır ve Type Safety ve Type Inreference açıklandığı gibi tamsayı türü çıkarımına uyar.
