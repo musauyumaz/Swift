@@ -1,6 +1,6 @@
 import UIKit
 
-// MARK: TEMELLER
+// MARK: THE BASICS(TEMELLER)
 /*
  * Swift değişmeyecek olan veriler için constant(let) kullanılmasını istiyor.
  * Tuple'lar veri grupları oluşturmanıza ve bunları aktarmanıza olanak tanır. Bir tuple kullanarak birçok veriyi tek bir bileşik veri olarak gönderebilirsiniz
@@ -11,17 +11,16 @@ import UIKit
  
 */
 
-// MARK: Sabitler ve Değişkenler
+// MARK: Constants and Variables(Sabitler ve Değişkenler)
 /*
  * Sabitler ve değişkenler, bir adı (örneğin maximumNumberOfLoginAttempts veya welcomeMessage) belirli bir türdeki bir değerle (örneğin 10 sayısı veya "Hello" dizesi) ilişkilendirir.
  * Sabitin değeri bir kez ayarlandıktan sonra değiştirilemez, ancak değişken ileride farklı bir değere ayarlanabilir.
 */
 
-//MARK: Değişken ve Sabit Tanımlama
+//MARK: Declaring Constants and Variables(Değişken ve Sabit Tanımlama)
 
 let maximumNumberOfLoginAttempts = 10
 var currentLoginAttempt = 0
-
 
 //Kodunuzda depolanan bir değer değişmeyecekse, her zaman let anahtar sözcüğüyle sabit olarak tanımlayın. Değişen değerleri depolamak için yalnızca değişkenleri kullanın.
 
@@ -42,7 +41,7 @@ if environment == "development" {
 //Tek bir satırda virgülle ayrılmış birden fazla sabit veya değişken tanımlayabilirsiniz:
 var x = 0.0, y = 0.0, z = 0.0
 
-//MARK: Type Annotations(Değer Türü Belirleme)
+//MARK: Type Annotations(Değişken/Sabit Türü Belirleme)
 
 //Sabit veya değişkeni bildirirken, sabit veya değişkenin depolayabileceği değerlerin türünü netleştirmek için type annotations kullanabilirsiniz.
 
@@ -59,7 +58,7 @@ var red, green, blue: Double
 
 // WARNING: Pratikte tip açıklamaları yazmanız nadiren gerekir. Bir sabit veya değişken için tanımlandığı noktada bir başlangıç değeri verirseniz, Swift, Tip Güvenliği ve Tip Çıkarımında açıklandığı gibi, neredeyse her zaman o sabit veya değişken için kullanılacak türü çıkarabilir. Yukarıdaki welcomeMessage örneğinde, başlangıç değeri verilmemiştir ve bu nedenle welcomeMessage değişkeninin türü, başlangıç değerinden çıkarılmak yerine bir tip açıklamasıyla belirtilmiştir.
 
-// MARK: Değişken ve Sabit İsimlendirme
+// MARK: Naming Constants and Variables(Değişken ve Sabit İsimlendirme)
 //Sabit ve değişken isimleri, Unicode karakterleri dahil olmak üzere hemen hemen her karakteri içerebilir:
 let π = 3.14159
 let 你好 = "你好世界"
@@ -79,7 +78,7 @@ let languageName = "Swift"
 //languageName = "Swift++"
 // Derleme Zamanı Hatası: languageName Değiştirilemez
 
-// MARK: Sabitleri ve Değişkenleri Yazdırma
+// MARK: Printing Constants and Variables(Sabitleri ve Değişkenleri Yazdırma)
 //print(_:separator:terminator:) işleviyle bir sabitin veya değişkenin geçerli değerini yazdırabilirsiniz:
 print(friendlyWelcome)
 // Bonjour! yazacaktır.
@@ -90,7 +89,7 @@ print(friendlyWelcome)
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
 // Console'a Yazar: "friendlyWelcome'ın güncel değeri Bonjour!"
 
-// MARK: Yorum Satırları
+// MARK: Comments(Yorum Satırları)
 //Yorumları, kodunuza çalıştırılamayan metinler eklemek, kendinize not veya hatırlatma olarak kullanmak için kullanın. Yorumlar, kodunuz derlendiğinde Swift derleyicisi tarafından yok sayılır.
 
 //Swift'teki yorumlar, C'deki yorumlara çok benzer. Tek satırlık yorumlar iki eğik çizgi (//) ile başlar:
@@ -109,7 +108,14 @@ Bu, ilk çok satırlı yorumun sonudur. */
 
 //İç içe geçmiş çok satırlı yorumlar, kod zaten çok satırlı yorumlar içeriyor olsa bile, büyük kod bloklarını hızlı ve kolay bir şekilde yorumlayabilmenizi sağlar.
 
-// MARK: Noktalı Virgül(;)
+// MARK: Semicolon (Noktalı Virgül(;))
 ///Diğer birçok dilden farklı olarak, Swift kodunuzdaki her ifadenin sonuna noktalı virgül (;) yazmanızı gerektirmez, ancak isterseniz yazabilirsiniz. Ancak, tek bir satıra birden fazla ayrı ifade yazmak istiyorsanız noktalı virgül kullanmanız gerekir:
 let cat = "🐱"; print(cat)
 // 🐱 yazdırır.
+
+// MARK: Integers(Tamsayılar)
+//Integers, 42 ve -23 gibi kesirli bileşeni olmayan tam sayılardır.
+//Integers, işaretli (pozitif, sıfır veya negatif) veya işaretsiz (pozitif veya sıfır) olabilir ve maksimum ve minimum değerleri boyutlarına (değerleri depolamak için kullanılan bit sayısı) bağlıdır.
+//Integer türleri, adlarında boyutlarını ve işaretlerini içerir. Örneğin, 8 bitlik işaretsiz bir tamsayı UInt8 türündedir ve 32 bitlik işaretli bir tamsayı Int32 türündedir.
+//Çoğu durumda, tam Integer boyutunu belirtmeniz gerekmediğinde, aşağıda açıklanan Int türünü kullanırsınız.
+//Finans veya inşaat gibi düzenlemelere tabi bir alanda veya yüksek hassasiyetli sonuçların beklendiği bir alanda hesaplamalar yapmak için, o alanın gereksinimlerine göre yuvarlama ve kesme gibi davranışları uygulayan özel amaçlı bir sayısal tür gerekebilir.
