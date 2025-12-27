@@ -1,6 +1,6 @@
 import UIKit
 
-// MARK: THE BASICS
+// MARK: TEMELLER
 /*
  * Swift değişmeyecek olan veriler için constant(let) kullanılmasını istiyor.
  * Tuple'lar veri grupları oluşturmanıza ve bunları aktarmanıza olanak tanır. Bir tuple kullanarak birçok veriyi tek bir bileşik veri olarak gönderebilirsiniz
@@ -9,4 +9,3 @@ import UIKit
  * Initialize edilmemiş bellek alanıyla ya da Initialize edilmemiş nesnelerle çalışmanızı engeller.
  * Swift, güvenlik kontrollerinin çoğunu kodunuzu oluştururken gerçekleştirir ve bazı durumlarda kodunuz çalışırken ek kontroller yapar.
  
- */
