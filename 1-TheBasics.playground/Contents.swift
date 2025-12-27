@@ -139,3 +139,18 @@ let maxValue = UInt8.max  // UInt8 maximum değer 255
 
 //UInt'i yalnızca, platformun yerel kelime boyutu ile aynı boyutta bir işaretsiz tamsayı türüne özellikle ihtiyaç duyduğunuzda kullanın. Bu durum söz konusu değilse, depolanacak değerlerin negatif olmadığı biliniyor olsa bile Int tercih edilir.
 //Tamsayı değerleri için Int'in tutarlı bir şekilde kullanılması, kodların birlikte çalışabilirliğini artırır, farklı sayı türleri arasında dönüştürme ihtiyacını ortadan kaldırır ve Type Safety ve Type Inreference açıklandığı gibi tamsayı türü çıkarımına uyar.
+
+//MARK: Floating-Point Numbers - Ondalıklı Sayılar
+//Float sayılar, 3.14159, 0.1 ve -273.15 gibi kesirli bir bileşene sahiptir.
+//Swift, farklı boyutlarda Integer'lar olduğu gibi, farklı boyutlarda sayıları destekleyen çeşitli Float türleri sunar. Kesin bir boyut belirtmeniz gerekmiyorsa Double kullanın. Aksi takdirde, Float16 veya Float80 gibi adında gerekli boyutu içeren türü kullanın.
+//Float matematiği için yaygın terminolojiye göre, Float 32 bit ve Double 64 bit kullanır. Bu türleri Float32 veya Float64 olarak da yazabilirsiniz. Örneğin, grafik kodu genellikle GPU'nun en hızlı veri türüne uymak için Float kullanır. Bazı ondalıklı sayılar yalnızca belirli platformlar tarafından desteklenir, ancak Float ve Double tüm platformlarda kullanılabilir.
+
+//KRİTİK: Floating-Point Kesin Değildir!
+let a = 10
+let b = 20
+let result = a + b  // 30 - KESINLIKLE 30
+
+let c: Float = 0.1
+let d: Float = 0.2
+let result2 = c + d  // 0.30000000000000004 gibi bir şey!
+//NEDEN? Çünkü bilgisayarlar ikili (binary) sistemde çalışır ve bazı ondalık sayıları tam olarak temsil edemez.
