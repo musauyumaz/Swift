@@ -154,3 +154,26 @@ let c: Float = 0.1
 let d: Float = 0.2
 let result2 = c + d  // 0.30000000000000004 gibi bir şey!
 //NEDEN? Çünkü bilgisayarlar ikili (binary) sistemde çalışır ve bazı ondalık sayıları tam olarak temsil edemez.
+
+//MARK: Type Safety and Type Inference(Tip Güvenliği ve Tip Çıkarımı)
+//Swift programındaki her değerin bir türü vardır. Constants, variables ve properties dahil olmak üzere, bir değeri depoladığınız her yerin de bir türü vardır. Türü, tür açıklaması kullanarak açıkça yazabilir veya Swift, başlangıç değerinden türü çıkarabilir.
+//Kodunuzda bir değer sağladığınız her yerde, bu değerin türü onu kullandığınız yerle eşleşmelidir. Örneğin, kodunuzun bir kısmı String gerektiriyorsa, yanlışlıkla Int geçiremezsiniz. Bu tür kontroller Swift'i tür güvenli bir dil yapar.
+//Tip güvenli bir dil, kodunuzun çalıştığı değerlerin tipleri konusunda net olmanızı teşvik eder.
+//Bir tipteki değerler asla başka bir tipe explicit olarak dönüştürülmez. Ancak, bazı tipler açıkça dönüştürülebilir.
+//Kod oluştururken Swift, kodun tip güvenliğini kontrol eder ve uyuşmayan tipleri hata olarak işaretler.
+//Tip denetimi, farklı türdeki değerlerle çalışırken hataları önlemenize yardımcı olur. Ancak bu, bildirdiğiniz her sabit ve değişkenin türünü belirtmeniz gerektiği anlamına gelmez. İhtiyacınız olan değerin türünü belirtmezseniz, Swift uygun türü belirlemek için tür çıkarımını kullanır. Tür çıkarımına göre, derleyici kodunuzu derlerken sağladığınız değerleri inceleyerek belirli bir ifadenin türünü otomatik olarak çıkarabilir.
+//Tip çıkarımından dolayı, Swift, C veya Objective-C gibi dillerden çok daha az tip beyanı gerektirir. Sabitler ve değişkenler hala açıkça tiplendirilir, ancak bunların tipini belirleme işinin çoğu sizin için yapılır.
+//Tip çıkarım, bir sabit veya değişkeni başlangıç değeriyle beyan ettiğinizde özellikle yararlıdır. Bu genellikle, sabit veya değişkeni beyan ettiğiniz noktada ona bir literal değer (veya literal) atayarak yapılır. (Literal değer, aşağıdaki örneklerdeki 42 ve 3.14159 gibi kaynak kodunuzda doğrudan görünen bir değerdir.
+//Örneğin, yeni bir sabite türünü belirtmeden 42 literal değeri atarsanız, Swift, sabitin bir tamsayı gibi görünen bir sayı ile başlatmış olduğunuz için, sabitin Int olmasını istediğinizi çıkarır:
+let meaningOfLife = 42
+// meaningOfLife Int türündedir.
+
+//Aynı şekilde, ondalıklı sayı için bir tür belirtmezseniz, Swift bir Double oluşturmak istediğinizi çıkarır:
+let pi = 3.14159
+// pi'nin türü Double olarak çıkarılır
+//Swift, ondalıklı sayıların türünü çıkarırken her zaman Double'ı (Float yerine) seçer.
+
+//Bir ifadede tamsayı ve ondalıklı sayı sabitlerini birleştirirseniz, bağlamdan Double türü çıkarılır:
+let anotherPi = 3 + 0.14159
+// anotherPi de Double türü olarak çıkarılır
+//3 sabit değerinin kendisinde açık bir türü yoktur, bu nedenle toplama işleminin bir parçası olarak ondalıklı sayı sabitinin varlığından uygun bir Double çıktı türü çıkarılır.
