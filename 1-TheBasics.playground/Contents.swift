@@ -210,3 +210,8 @@ let hexadecimalDouble = 0xC.3p0
 let paddedDouble = 000123.456
 let oneMillion = 1_000_000
 let justOverOneMillion = 1_000_000.000_000_1
+
+//MARK: Numeric Type Conversion(Sayısal Tür Dönüştürme)
+//Kodunuzdaki tüm genel amaçlı tamsayı sabitleri ve değişkenleri için, negatif olmadığı biliniyor olsa bile Int türünü kullanın. Günlük durumlarda varsayılan tamsayı türünü kullanmak, tamsayı sabitlerinin ve değişkenlerinin kodunuzda hemen birlikte çalışabilir olduğu ve tamsayı sabit değerleri için çıkarılan türle eşleşeceği anlamına gelir.
+
+//Diğer tamsayı türlerini yalnızca, dış kaynaklardan gelen açıkça boyutlandırılmış veriler nedeniyle, performans, bellek kullanımı veya diğer gerekli optimizasyonlar için, elinizdeki görev için özel olarak gerekli olduklarında kullanın. Bu durumlarda açıkça boyutlandırılmış türleri kullanmak, kazara oluşan değer taşmalarını yakalamaya yardımcı olur ve kullanılan verilerin doğasını dolaylı olarak belgeler.
