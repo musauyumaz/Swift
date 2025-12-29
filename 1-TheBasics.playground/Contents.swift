@@ -177,3 +177,36 @@ let pi = 3.14159
 let anotherPi = 3 + 0.14159
 // anotherPi de Double türü olarak çıkarılır
 //3 sabit değerinin kendisinde açık bir türü yoktur, bu nedenle toplama işleminin bir parçası olarak ondalıklı sayı sabitinin varlığından uygun bir Double çıktı türü çıkarılır.
+
+//MARK: Numeric Literals(Sayısal Sabitler)
+//Tamsayı sabitler şu şekilde yazılabilir:
+//Önek içermeyen ondalık sayı
+//0b öneki ile ikili sayı
+//0o öneki ile sekizlik sayı
+//0x öneki ile onaltılık sayı
+//Bu tamsayı sabitlerinin tümü ondalık değeri 17'dir:
+
+let decimalInteger = 17
+let binaryInteger = 0b10001       // ikili tabanda 17
+let octalInteger = 0o21           // sekizlik tabanda 17
+let hexadecimalInteger = 0x11     // onaltılık tabanda 17
+
+//Ondalıklı sayılar ondalık (önek olmadan) veya onaltılık (0x öneki ile) olabilir. Ondalık noktanın her iki yanında daima bir sayı (veya onaltılık sayı) bulunmalıdır. Onluk tabandaki ondalıklı sayılar isteğe bağlı olarak büyük veya küçük harf e ile gösterilen bir üs içerebilir; onaltılık Ondalık sayılar ise büyük veya küçük harf p ile gösterilen bir üs içermelidir.
+
+//Üssü x olan ondalık sayılar için, taban sayısı 10ˣ ile çarpılır:
+//1.25e2, 1.25 x 10² veya 125.0 anlamına gelir.
+//1.25e-2, 1.25 x 10⁻² veya 0.0125 anlamına gelir.
+
+//X üssü olan onaltılık tabanda sayılar için, taban sayısı 2ˣ ile çarpılır:
+//0xFp2, 15 x 2² veya 60.0 anlamına gelir.
+//0xFp-2, 15 x 2⁻² veya 3,75 anlamına gelir.
+
+//Bu Ondalıklı sayı sabitlerinin tümü 12,1875 ondalık değerine sahiptir:
+let decimalDouble = 12.1875
+let exponentDouble = 1.21875e1
+let hexadecimalDouble = 0xC.3p0
+
+//Sayısal sabitler, okunmasını kolaylaştırmak için ek biçimlendirme içerebilir. Hem tamsayılar hem de ondalıklı sayılar, okunabilirliği artırmak için ek sıfırlarla doldurulabilir ve alt çizgi içerebilir. Her iki biçimlendirme türü de sabitin temel değerini etkilemez:
+let paddedDouble = 000123.456
+let oneMillion = 1_000_000
+let justOverOneMillion = 1_000_000.000_000_1
