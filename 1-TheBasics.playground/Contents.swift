@@ -235,3 +235,16 @@ let one: UInt8 = 1
 let twoThousandAndOne = twoThousand + UInt16(one)
 //Toplamın her iki tarafı da artık UInt16 türünde olduğundan, toplama işlemi yapılabilir. Çıktı sabiti (twoThousandAndOne), iki UInt16 değerinin toplamı olduğu için UInt16 türü olduğu sonucuna varılır.
 //SomeType(ofInitialValue)(Örneğin UInt16(one)), Swift türünün başlatıcısını çağırmak ve bir başlangıç değeri iletmek için varsayılan yoldur. Arka planda, UInt16 bir UInt8 değerini kabul eden bir constructor'a sahiptir ve bu constructor, mevcut bir UInt8'den yeni bir UInt16 oluşturmak için kullanılır. Ancak, buraya herhangi bir tür aktaramazsınız — UInt16'nın bir constructor sağladığı bir tür olması gerekir. Yeni türleri (kendi tür tanımlarınız dahil) kabul eden constructorlar sağlamak için mevcut türleri genişletme konusu, Uzantılar bölümünde ele alınmaktadır.
+//MARK: Integer and Floating-Point Conversion(Tamsayı ve Ondalıklı Sayı Dönüştürme)
+//Integer ve Double/Float türleri arasındaki dönüşümler açıkça belirtilmelidir:
+let three = 3
+let pointOneFourOneFiveNine = 0.14159
+let pi2 = Double(three) + pointOneFourOneFiveNine
+// pi, 3.14159'a eşittir ve Double türü olduğu çıkarılır
+//Burada, sabit three değeri, Double türünde yeni bir değer oluşturmak için kullanılır, böylece toplamanın her iki tarafı da aynı türdendir. Bu dönüştürme yapılmazsa, toplama işlemine izin verilmez.
+
+//Double'dan integer'a dönüştürme de açıkça belirtilmelidir. Bir tamsayı türü, Double veya Float değeriyle başlatılabilir:
+let integerPi = Int(pi)
+// integerPi, 3'e eşittir ve Int türü olduğu çıkarılır.
+//Ondalıklı sayı değerleri, bu şekilde yeni bir tamsayı değerini başlatmak için kullanıldığında her zaman kesilir. Bu, 4,75'in 4'e ve -3,9'un -3'e dönüştüğü anlamına gelir.
+//Sayısal sabitleri ve değişkenleri birleştirme kuralları, sayısal sabitlerin kurallarından farklıdır. Sabit değer 3, sabit değer 0,14159'a doğrudan eklenebilir, çünkü sayısal sabitlerin kendileri açık bir türe sahip değildir. Türleri, yalnızca derleyici tarafından değerlendirildikleri noktada çıkarılır.
