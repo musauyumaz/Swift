@@ -248,3 +248,17 @@ let integerPi = Int(pi)
 // integerPi, 3'e eşittir ve Int türü olduğu çıkarılır.
 //Ondalıklı sayı değerleri, bu şekilde yeni bir tamsayı değerini başlatmak için kullanıldığında her zaman kesilir. Bu, 4,75'in 4'e ve -3,9'un -3'e dönüştüğü anlamına gelir.
 //Sayısal sabitleri ve değişkenleri birleştirme kuralları, sayısal sabitlerin kurallarından farklıdır. Sabit değer 3, sabit değer 0,14159'a doğrudan eklenebilir, çünkü sayısal sabitlerin kendileri açık bir türe sahip değildir. Türleri, yalnızca derleyici tarafından değerlendirildikleri noktada çıkarılır.
+
+//MARK: Type Aliases(Tür Takma Adları)
+//Type Aliases, mevcut bir tür için alternatif bir ad tanımlar. Type Aliases'ı 'typealias' anahtar sözcüğüyle tanımlarsınız.
+
+//Type Aliases, mevcut bir türü bağlam açısından daha uygun bir adla belirtmek istediğinizde kullanışlıdır. Örneğin, harici bir kaynaktan belirli boyuttaki verilerle çalışırken:
+
+typealias AudioSample = UInt16
+//Bir Type Aliases tanımladıktan sonra, bu takma adı orijinal adın kullanılabileceği her yerde kullanabilirsiniz:
+
+var maxAmplitudeFound = AudioSample.min
+// maxAmplitudeFound artık 0'dır
+//Burada AudioSample, UInt16 için bir takma ad olarak tanımlanmıştır. Bir takma ad olduğu için AudioSample.min çağrısı aslında UInt16.min'i çağırır ve bu da maxAmplitudeFound değişkeni için 0 başlangıç değeri sağlar.
+
+
