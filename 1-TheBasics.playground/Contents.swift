@@ -261,4 +261,33 @@ var maxAmplitudeFound = AudioSample.min
 // maxAmplitudeFound artık 0'dır
 //Burada AudioSample, UInt16 için bir takma ad olarak tanımlanmıştır. Bir takma ad olduğu için AudioSample.min çağrısı aslında UInt16.min'i çağırır ve bu da maxAmplitudeFound değişkeni için 0 başlangıç değeri sağlar.
 
+//MARK: Booleans(Mantıksal Değerler)
+//Swift, Bool adlı temel bir Booleans türüne sahiptir. Booleans değerleri, yalnızca doğru veya yanlış olabileceğinden mantıksal olarak adlandırılır. Swift, true ve false olmak üzere iki Booleans sabit değeri sağlar:
+
+let orangesAreOrange = true
+let turnipsAreDelicious = false
+//orangesAreOrange ve turnipsAreDelicious türleri, Booleans sabit değerlerle başlatıldıkları için Bool olarak çıkarılmıştır. Yukarıdaki Int ve Double ile olduğu gibi, sabitleri veya değişkenleri oluşturur oluşturmaz true veya false olarak ayarlarsanız, bunları Bool olarak bildirmenize gerek yoktur.
+
+//Boolean değerleri, if ifadesi gibi koşullu ifadelerle çalışırken özellikle kullanışlıdır:
+if turnipsAreDelicious {
+    print("Mmm, lezzetli şalgamlar!")
+} else {
+    print("Iyy, şalgamlar iğrenç.")
+}
+// "Iyy, şalgamlar iğrenç." yazdırır.
+//if ifadesi gibi koşullu ifadeler, Kontrol Akışı bölümünde daha ayrıntılı olarak ele alınmaktadır.
+//Swift'in tür güvenliği, Boolean olmayan değerlerin Bool ile değiştirilmesini engeller. Aşağıdaki örnek, derleme zamanı hatası bildirir:
+let i = 1
+//if i {
+    // bu örnek derlenmez ve hata bildirir
+//}
+
+//Ancak, aşağıdaki alternatif örnek geçerlidir:
+let i2 = 1
+if i2 == 1 {
+    // bu örnek başarıyla derlenir
+}
+//i == 1 karşılaştırmasının sonucu Bool türündedir ve bu nedenle ikinci örnek tür denetiminden geçer. i == 1 gibi karşılaştırmalar Temel İşlemciler bölümünde ele alınmaktadır.
+//Swift'teki diğer tür güvenliği örneklerinde olduğu gibi, bu yaklaşım da kazara hataları önler ve belirli bir kod bölümünün amacının her zaman açık olmasını sağlar.
+
 
