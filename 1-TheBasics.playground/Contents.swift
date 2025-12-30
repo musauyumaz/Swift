@@ -215,3 +215,23 @@ let justOverOneMillion = 1_000_000.000_000_1
 //Kodunuzdaki tüm genel amaçlı tamsayı sabitleri ve değişkenleri için, negatif olmadığı biliniyor olsa bile Int türünü kullanın. Günlük durumlarda varsayılan tamsayı türünü kullanmak, tamsayı sabitlerinin ve değişkenlerinin kodunuzda hemen birlikte çalışabilir olduğu ve tamsayı sabit değerleri için çıkarılan türle eşleşeceği anlamına gelir.
 
 //Diğer tamsayı türlerini yalnızca, dış kaynaklardan gelen açıkça boyutlandırılmış veriler nedeniyle, performans, bellek kullanımı veya diğer gerekli optimizasyonlar için, elinizdeki görev için özel olarak gerekli olduklarında kullanın. Bu durumlarda açıkça boyutlandırılmış türleri kullanmak, kazara oluşan değer taşmalarını yakalamaya yardımcı olur ve kullanılan verilerin doğasını dolaylı olarak belgeler.
+
+//MARK: Integer Conversion(Tamsayı Dönüştürme)
+//Bir tamsayı sabiti veya değişkeninde saklanabilecek sayı aralığı, her sayısal tür için farklıdır. Bir Int8 sabiti veya değişkeni -128 ile 127 arasındaki sayıları saklayabilirken, bir UInt8 sabiti veya değişkeni 0 ile 255 arasındaki sayıları saklayabilir.
+//Boyutlu bir tamsayı türündeki sabit veya değişkene sığmayan bir sayı, kodunuz derlendiğinde hata olarak bildirilir:
+//let cannotBeNegative: UInt8 = -1
+// UInt8 negatif sayıları depolayamaz, bu nedenle bir hata bildirilir
+//let tooBig: Int8 = Int8.max + 1
+// Int8 maksimum değerinden büyük bir sayıyı depolayamaz,
+// bu nedenle bir hata bildirilir
+
+//Her sayısal tür farklı bir değer aralığını depolayabileceğinden, sayısal tür dönüştürmeyi duruma göre seçmeniz gerekir. Bu seçmeli yaklaşım, gizli dönüştürme hatalarını önler ve kodunuzda tür dönüştürme amaçlarını açık hale getirmeye yardımcı olur.
+
+//Belirli bir sayı türünü başka bir türe dönüştürmek için, mevcut değerle istenen türde yeni bir sayı başlatırsınız.
+//Aşağıdaki örnekte, twoThousand sabiti UInt16 türündedir, oysa one sabiti UInt8 türündedir. Aynı türde olmadıkları için doğrudan birbirlerine eklenemezler. Bunun yerine, bu örnekte UInt16(one) çağrısı yapılarak one değerine sahip yeni bir UInt16 başlatılır ve bu değer orijinal değerin yerine kullanılır:
+
+let twoThousand: UInt16 = 2_000
+let one: UInt8 = 1
+let twoThousandAndOne = twoThousand + UInt16(one)
+//Toplamın her iki tarafı da artık UInt16 türünde olduğundan, toplama işlemi yapılabilir. Çıktı sabiti (twoThousandAndOne), iki UInt16 değerinin toplamı olduğu için UInt16 türü olduğu sonucuna varılır.
+//SomeType(ofInitialValue)(Örneğin UInt16(one)), Swift türünün başlatıcısını çağırmak ve bir başlangıç değeri iletmek için varsayılan yoldur. Arka planda, UInt16 bir UInt8 değerini kabul eden bir constructor'a sahiptir ve bu constructor, mevcut bir UInt8'den yeni bir UInt16 oluşturmak için kullanılır. Ancak, buraya herhangi bir tür aktaramazsınız — UInt16'nın bir constructor sağladığı bir tür olması gerekir. Yeni türleri (kendi tür tanımlarınız dahil) kabul eden constructorlar sağlamak için mevcut türleri genişletme konusu, Uzantılar bölümünde ele alınmaktadır.
