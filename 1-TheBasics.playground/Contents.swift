@@ -443,3 +443,11 @@ if let firstNumber = Int("4") {
 // "4 < 42 < 100" yazdırır.
 
 //if deyiminde Optional bağlama ile oluşturulan sabitler ve değişkenler yalnızca if deyiminin gövdesi içinde kullanılabilir. Buna karşılık, guard deyimi ile oluşturulan sabitler ve değişkenler, guard deyimini izleyen kod satırlarında kullanılabilir.
+
+//MARK: Providing a Fallback Value(Yedek Değer Atama)
+//Eksik bir değeri işlemenin başka bir yolu da nil-coalescing operatörü (??) kullanarak varsayılan bir değer sağlamaktır. ?? solundaki isteğe bağlı değer nil değilse, bu değer açılır ve kullanılır. Aksi takdirde, ?? sağındaki değer kullanılır. Örneğin, aşağıdaki kod, bir isim belirtilmişse bu isimle birini selamlar ve isim nil ise genel bir selamlama kullanır.
+
+let name: String? = nil
+let greeting = "Hello, " + (name ?? "friend") + "!"
+print(greeting)
+// "Hello, friend!" yazdırır
