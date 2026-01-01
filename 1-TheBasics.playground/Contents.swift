@@ -384,3 +384,62 @@ if convertedNumber1 != nil {
 
 //NOTE: Objective-C'de nil, var olmayan bir nesneye işaret eden bir işaretçidir. Swift'te nil bir işaretçi değildir — belirli bir türdeki değerin yokluğudur. Nesne türleri dışında, herhangi bir türdeki isteğe bağlı değişkenler de nil olarak ayarlanabilir.
 
+//MARK: Optional Binding
+//Optional Binding, bir optional değişkenin bir değer içerip içermediğini öğrenmek ve içerdiği takdirde bu değeri geçici bir sabit veya değişken olarak kullanılabilir hale getirmek için kullanılır. Optional Binding, if, guard ve while deyimleriyle birlikte kullanılarak optional bir değişkenin içindeki bir değeri kontrol etmek ve bu değeri tek bir eylemin parçası olarak bir sabit veya değişkene çıkarmak için kullanılabilir.
+
+//if ifadesi için isteğe bağlı bağlamayı aşağıdaki gibi yazın:
+/*
+ if let <#constantName#> = <#someOptional#> {
+    <#statements#>
+ }
+*/
+//Optionals bölümündeki possibleNumber örneğini, zorla açma yerine isteğe bağlı bağlama kullanacak şekilde yeniden yazabilirsiniz:
+if let actualNumber = Int(possibleNumber) {
+    print("\"\(possibleNumber)\" dizesi, \(actualNumber) tamsayı değerine sahiptir")
+} else {
+    print("\"\(possibleNumber)\" dizesi tamsayıya dönüştürülemedi")
+}
+// "123" dizesi, 123 tamsayı değerine sahiptir" yazdırır.
+
+//Bu kod şu şekilde okunabilir:
+//"Int(possibleNumber) tarafından döndürülen optional Int bir değer içeriyorsa, actualNumber adlı yeni bir sabiti isteğe bağlı öğede bulunan değere ayarlayın."
+//Dönüştürme başarılı olursa, actualNumber sabiti if ifadesinin ilk dalında kullanılabilir hale gelir. Bu sabit, isteğe bağlı öğede bulunan değerle önceden başlatılmıştır ve karşılık gelen optional olmayan türe sahiptir. Bu durumda, possibleNumber'ın türü Int? olduğundan, actualNumber'ın türü Int olur.
+
+//İçerdiği değere eriştikten sonra orijinal, Optional sabit veya değişkene başvurmanız gerekmiyorsa, yeni sabit veya değişken için aynı adı kullanabilirsiniz:
+let myNumber = Int(possibleNumber)
+// Burada, myNumber Optional bir tamsayıdır.
+if let myNumber = myNumber {
+    // Burada, myNumber Optional olmayan bir tamsayıdır.
+    print("My number is \(myNumber)")
+}
+// "My number is 123" yazdırır.
+
+//Bu kod, önceki örnekteki kod gibi, myNumber'ın bir değer içerip içermediğini kontrol ederek başlar. myNumber bir değer içeriyorsa, myNumber adlı yeni bir sabitin değeri bu değere ayarlanır. if ifadesinin gövdesinde, myNumber yazmak bu yeni zorunlu olmayan sabiti ifade eder. if ifadesinden önce veya sonra myNumber yazmak, orijinal isteğe bağlı tamsayı sabitini ifade eder.
+
+//Bu tür kodlar çok yaygın olduğundan, Optional bir değeri açmak için daha kısa bir yazım kullanabilirsiniz: Sadece açtığınız sabitin veya değişkenin adını yazın. Yeni, açılmış sabit veya değişken, Optional değerle aynı adı örtük olarak kullanır.
+
+if let myNumber {
+    print("My number is \(myNumber)")
+}
+// "My number is 123" yazdırır.
+
+//Optional bağlama ile hem sabitleri hem de değişkenleri kullanabilirsiniz. if ifadesinin ilk dalında myNumber değerini değiştirmek isterseniz, bunun yerine if var myNumber yazabilirsiniz ve Optional içindeki değer sabit yerine değişken olarak kullanılabilir hale gelir. if ifadesinin gövdesinde myNumber üzerinde yaptığınız değişiklikler yalnızca o yerel değişken için geçerlidir, açtığınız orijinal isteğe bağlı sabit veya değişken için geçerli değildir.
+
+//Tek bir if ifadesine, virgülle ayırarak istediğiniz kadar Optional bağlama ve Boolean koşulu ekleyebilirsiniz. Optional bağlamalardaki değerlerden herhangi biri nil ise veya herhangi bir Boolean koşulu false olarak değerlendirilirse, if ifadesinin tüm koşulu false olarak kabul edilir. Aşağıdaki if ifadeleri eşdeğerdir:
+
+if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
+    print("\(firstNumber) < \(secondNumber) < 100")
+}
+// "4 < 42 < 100" yazdırır.
+
+
+if let firstNumber = Int("4") {
+    if let secondNumber = Int("42") {
+        if firstNumber < secondNumber && secondNumber < 100 {
+            print("\(firstNumber) < \(secondNumber) < 100")
+        }
+    }
+}
+// "4 < 42 < 100" yazdırır.
+
+//if deyiminde Optional bağlama ile oluşturulan sabitler ve değişkenler yalnızca if deyiminin gövdesi içinde kullanılabilir. Buna karşılık, guard deyimi ile oluşturulan sabitler ve değişkenler, guard deyimini izleyen kod satırlarında kullanılabilir.
