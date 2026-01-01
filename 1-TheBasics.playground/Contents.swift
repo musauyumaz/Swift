@@ -290,4 +290,46 @@ if i2 == 1 {
 //i == 1 karşılaştırmasının sonucu Bool türündedir ve bu nedenle ikinci örnek tür denetiminden geçer. i == 1 gibi karşılaştırmalar Temel İşlemciler bölümünde ele alınmaktadır.
 //Swift'teki diğer tür güvenliği örneklerinde olduğu gibi, bu yaklaşım da kazara hataları önler ve belirli bir kod bölümünün amacının her zaman açık olmasını sağlar.
 
+//MARK: Tuples
 
+//Tuple'lar birden fazla değeri tek bir bileşik değer halinde gruplandırır. Tuple içindeki değerler herhangi bir türde olabilir ve birbirleriyle aynı türde olmak zorunda değildir.
+
+//Bu örnekte, (404, "Not Found") bir HTTP durum kodunu tanımlayan bir tuple'dır. HTTP durum kodu, bir web sayfasını her talep ettiğinizde web sunucusu tarafından döndürülen özel bir değerdir. Var olmayan bir web sayfasını talep ettiğinizde 404 Bulunamadı durum kodu döndürülür.
+
+let http404Error = (404, "Bulunamadı")
+// http404Error, (Int, String) türündedir ve (404, "Bulunamadı") değerine eşittir.
+
+//(404, "Bulunamadı") tuple, bir Int ve bir String'i bir araya getirerek HTTP durum koduna iki ayrı değer verir: bir sayı ve insan tarafından okunabilir bir açıklama. "(Int, String) türünde bir tuple" olarak tanımlanabilir.
+
+//Herhangi bir tür permütasyonundan tuple'lar oluşturabilirsiniz ve bunlar istediğiniz kadar farklı tür içerebilir. (Int, Int, Int) veya (String, Bool) türünde bir tuple'a veya ihtiyacınız olan başka herhangi bir permütasyona sahip olmanıza engel olan hiçbir şey yoktur.
+
+//Bir tuple'ın içeriğini ayrı sabitlere veya değişkenlere ayrıştırabilir ve bunlara normal şekilde erişebilirsiniz:
+let (statusCode, statusMessage) = http404Error
+print("Durum kodu \(statusCode)")
+// "Durum kodu 404" yazdırır.
+print("Durum mesajı \(statusMessage)")
+// "Durum mesajı Bulunamadı" yazdırır.
+
+//Tuple'ın değerlerinden sadece bazılarına ihtiyacınız varsa, tuple'ı ayrıştırırken alt çizgi (_) ile tuple'ın bazı kısımlarını yok sayın:
+let (justTheStatusCode, _) = http404Error
+print("Durum kodu \(justTheStatusCode)")
+// "Durum kodu 404" yazdırır.
+
+//Alternatif olarak, sıfırdan başlayan indeks numaralarını kullanarak tuple'daki tek tek öğe değerlerine erişebilirsiniz:
+print("Durum kodu \(http404Error.0)")
+// "Durum kodu 404" yazdırır.
+print("Durum mesajı \(http404Error.1)")
+// "Durum mesajı Bulunamadı" yazdırır.
+
+//Tuple tanımlandığında, tuple içindeki tek tek öğelere isim verebilirsiniz:
+let http200Status = (statusCode: 200, description: "OK")
+
+//Bir tuple içindeki öğelere isim verirseniz, öğe isimlerini kullanarak bu öğelerin değerlerine erişebilirsiniz:
+print("Durum kodu \(http200Status.statusCode)")
+// "Durum kodu 200" yazdırır.
+print("Durum mesajı \(http200Status.description)")
+// "Durum mesajı Tamam" yazdırır.
+
+//Tuple'lar özellikle işlevlerin dönüş değerleri olarak kullanışlıdır. Bir web sayfasını almaya çalışan bir işlev, sayfanın alınmasının başarılı olup olmadığını açıklamak için (Int, String) tuple türünü döndürebilir. İşlev, her biri farklı türde olan iki farklı değere sahip bir tuple döndürerek, tek bir türden tek bir değer döndürebileceğinden daha yararlı bilgiler sağlar.
+
+//NOTE: Tuple'lar, ilgili değerlerin basit grupları için kullanışlıdır. Karmaşık veri yapılarının oluşturulması için uygun değildir. Veri yapınız daha karmaşık olacaksa, tuple yerine sınıf veya yapı olarak modelleyin.
