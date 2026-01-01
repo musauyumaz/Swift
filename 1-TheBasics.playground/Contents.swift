@@ -347,3 +347,40 @@ let convertedNumber: Int? = Int(possibleNumber)
 //İsteğe bağlı bir tür yazmak için, isteğe bağlı türün adının arkasına soru işareti (?) yazarsınız — örneğin, isteğe bağlı Int türünün türü Int? 'dir. İsteğe bağlı Int her zaman bir Int değeri veya hiç değer içermez. Bool veya String değeri gibi başka hiçbir şey içeremez.
 
 
+//MARK: nil
+//Özel nil değerini atayarak isteğe bağlı bir değişkeni değersiz bir duruma ayarlayabilirsiniz:
+
+var serverResponseCode: Int? = 404
+// serverResponseCode, 404 değerinde gerçek bir Int değeri içerir.
+serverResponseCode = nil
+// serverResponseCode artık hiçbir değer içermez.
+
+//Varsayılan bir değer sağlamadan isteğe bağlı bir değişken tanımlarsanız, değişken otomatik olarak nil olarak ayarlanır:
+var surveyAnswer: String?
+// surveyAnswer otomatik olarak nil olarak ayarlanır
+
+//Bir isteğe bağlı değişkenin bir değer içerip içermediğini öğrenmek için if deyimini kullanarak isteğe bağlı değişkeni nil ile karşılaştırabilirsiniz. Bu karşılaştırmayı "eşittir" işleci (==) veya "eşit değildir" işleci (!=) ile gerçekleştirirsiniz.
+
+//İsteğe bağlı bir değişken bir değer içeriyorsa, nil ile "eşit değil" olarak kabul edilir:
+let possibleNumber1 = "123"
+let convertedNumber1 = Int(possibleNumber1)
+
+if convertedNumber1 != nil {
+    print("convertedNumber1 bazı tamsayı değerleri içerir.")
+}
+// "convertedNumber bazı tamsayı değerleri içerir." yazdırır.
+
+//Nil'i zorunlu olmayan sabitler veya değişkenlerle kullanamazsınız. Kodunuzdaki bir sabit veya değişkenin belirli koşullar altında değer olmadan çalışması gerekiyorsa, onu uygun türde bir isteğe bağlı değer olarak bildirin. Zorunlu olmayan bir değer olarak bildirilen bir sabit veya değişkenin asla nil değeri içermeyeceği garanti edilir. Zorunlu olmayan bir değere nil atamaya çalışırsanız, derleme zamanı hatası alırsınız.
+
+//İsteğe bağlı ve isteğe bağlı olmayan değerlerin bu şekilde ayrılması, hangi bilgilerin eksik olabileceğini açıkça işaretlemenizi sağlar ve eksik değerleri işleyen kod yazmayı kolaylaştırır. İsteğe bağlı bir değeri yanlışlıkla isteğe bağlı olmayan bir değermiş gibi ele alamazsınız, çünkü bu hata derleme sırasında bir hata üretir. Değeri açtıktan sonra, o değerle çalışan diğer kodların hiçbirinin nil olup olmadığını kontrol etmesi gerekmez, bu nedenle kodunuzun farklı bölümlerinde aynı değeri tekrar tekrar kontrol etmenize gerek yoktur.
+
+/*
+ İsteğe bağlı bir değere eriştiğinizde, kodunuz her zaman hem nil hem de nil olmayan durumu işler. Bir değer eksik olduğunda, aşağıdaki bölümlerde açıklanan birkaç şey yapabilirsiniz:
+ * Değer nil olduğunda, değer üzerinde işlem yapan kodu atlayın.
+ * nil değerini yaymak için nil döndürün veya İsteğe Bağlı Zincirleme bölümünde açıklanan ?. operatörünü kullanın.
+ * ?? operatörünü kullanarak bir yedek değer sağlayın.
+ * ! operatörünü kullanarak programın yürütülmesini durdurun.
+*/
+
+//NOTE: Objective-C'de nil, var olmayan bir nesneye işaret eden bir işaretçidir. Swift'te nil bir işaretçi değildir — belirli bir türdeki değerin yokluğudur. Nesne türleri dışında, herhangi bir türdeki isteğe bağlı değişkenler de nil olarak ayarlanabilir.
+
