@@ -333,3 +333,17 @@ print("Durum mesajı \(http200Status.description)")
 //Tuple'lar özellikle işlevlerin dönüş değerleri olarak kullanışlıdır. Bir web sayfasını almaya çalışan bir işlev, sayfanın alınmasının başarılı olup olmadığını açıklamak için (Int, String) tuple türünü döndürebilir. İşlev, her biri farklı türde olan iki farklı değere sahip bir tuple döndürerek, tek bir türden tek bir değer döndürebileceğinden daha yararlı bilgiler sağlar.
 
 //NOTE: Tuple'lar, ilgili değerlerin basit grupları için kullanışlıdır. Karmaşık veri yapılarının oluşturulması için uygun değildir. Veri yapınız daha karmaşık olacaksa, tuple yerine sınıf veya yapı olarak modelleyin.
+
+//MARK: Optionals
+//Değerin bulunmayabileceği durumlarda Optionals kullanırsınız. Optionals iki olasılığı temsil eder: Belirtilen türde bir değer vardır ve bu değere erişmek için Optionals'ı açabilirsiniz ya da hiç değer yoktur.
+
+//Eksik olabilecek bir değer örneği olarak, Swift'in Int türü, String değerini Int değerine dönüştürmeye çalışan bir constructor'a sahiptir. Ancak, yalnızca bazı dizeler tamsayılara dönüştürülebilir. "123" dizesi sayısal değer 123'e dönüştürülebilir, ancak "hello, world" dizesi karşılık gelen bir sayısal değere sahip değildir. Aşağıdaki örnekte, başlatıcı kullanılarak bir String'i Int'e dönüştürmeye çalışılmıştır:
+let possibleNumber = "123"
+let convertedNumber: Int? = Int(possibleNumber)
+// convertedNumber'ın türü "optional Int" dir.
+
+//Yukarıdaki koddaki başlatıcı başarısız olabileceğinden, Int yerine isteğe bağlı bir Int döndürür.
+
+//İsteğe bağlı bir tür yazmak için, isteğe bağlı türün adının arkasına soru işareti (?) yazarsınız — örneğin, isteğe bağlı Int türünün türü Int? 'dir. İsteğe bağlı Int her zaman bir Int değeri veya hiç değer içermez. Bool veya String değeri gibi başka hiçbir şey içeremez.
+
+
