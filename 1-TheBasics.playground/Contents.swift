@@ -467,3 +467,41 @@ guard let number = convertedNumber2 else {
     fatalError("Sayı geçersiz")
 }
 //Yukarıdaki kodun her iki versiyonu da convertedNumber2'ın her zaman bir değer içermesine bağlıdır. Bu gereksinimi kodun bir parçası olarak yazmak, yukarıdaki yaklaşımlardan herhangi birini kullanarak, kodunuzun gereksinimin çalışma zamanında doğru olup olmadığını kontrol etmesini sağlar.
+
+//MARK: Implicitly Unwrapped Optionals
+//Yukarıda açıklandığı gibi, Optionals değişkenler bir sabit veya değişkenin "değeri olmamasına" izin verildiğini gösterir. Optionals değişkenler, bir if deyimi ile bir değerin var olup olmadığını kontrol edilebilir ve varsa, Optional binding ile koşullu olarak açığa çıkarılabilir.
+
+//Bazen, bir programın yapısından, bir Optional değişkenin ilk kez ayarlandıktan sonra her zaman bir değere sahip olacağı açıktır. Bu durumlarda, Optional değişkenin değerine her erişildiğinde kontrol etme ve açma gerekliliğini ortadan kaldırmak yararlıdır, çünkü her zaman bir değere sahip olduğu güvenle varsayılabilir.
+
+//Bu tür Optionals'lar, Implicitly Unwrapped Optionals olarak tanımlanır. Implicitly Unwrapped Optionals'ı, Optionals hale getirmek istediğiniz türün arkasına soru işareti (String?) yerine ünlem işareti (String!) koyarak yazarsınız. Optionals'ı kullanırken Optional adının arkasına ünlem işareti koymak yerine, Optional'ı bildirirken Optional türünün arkasına ünlem işareti koyarsınız.
+
+//Implicitly Unwrapped Optionals'lar, Optional bir değerin ilk tanımlandığında varlığı doğrulandığında ve bundan sonra her an var olduğu kesin olarak varsayılabildiğinde kullanışlıdır. Swift'te Implicitly Unwrapped Optionals'ların birincil kullanımı, Sahipsiz Referanslar ve Implicitly Unwrapped Optionals Özellikler bölümünde açıklandığı gibi, nesne oluşturma sırasında gerçekleşir.
+
+//Bir değişkenin daha sonra nil olma ihtimali varsa, Implicitly Unwrapped Optionals değişken kullanmayın. Bir değişkenin ömrü boyunca nil değerini kontrol etmeniz gerekiyorsa, her zaman normal Optional tür kullanın.
+
+//Implicitly Unwrapped Optionals, arka planda normal Optional'dır, ancak her erişildiğinde Optional değeri açmaya gerek kalmadan Optional olmayan bir değer gibi de kullanılabilir. Aşağıdaki örnek, örtülü değerlerine açık bir String olarak erişildiğinde Optional bir string ile Implicitly Unwrapped Optionals bir string arasındaki davranış farkını göstermektedir:
+let possibleString: String? = "An optional string."
+let forcedString: String = possibleString! // Açıkça açılması gerekir
+
+
+let assumedString: String! = "An implicitly unwrapped optional string."
+let implicitString: String = assumedString // Otomatik olarak açılır
+
+//Implicitly Unwrapped Optionals değişkeni, gerektiğinde Optionals değişkenin zorla açılmasına izin veren bir değişken olarak düşünebilirsiniz. Örtük olarak açılmış isteğe bağlı bir değer kullandığınızda, Swift önce onu sıradan bir isteğe bağlı değer olarak kullanmaya çalışır; isteğe bağlı olarak kullanılamazsa, Swift değeri zorla açar. Yukarıdaki kodda, implicitString'in açık, isteğe bağlı olmayan String türüne sahip olması nedeniyle, optional değer assumedString, değeri implicitString'e atanmadan önce zorla açılır. Aşağıdaki kodda, optionalString'in açık bir türü olmadığı için sıradan bir isteğe bağlıdır.
+
+let optionalString = assumedString
+// optionalString'in türü "String?" olup, assumedString zorla açılmamıştır.
+
+//Örtük olarak açılmış bir isteğe bağlı değer nil ise ve bu değerin sarılmış değerine erişmeye çalışırsanız, bir çalışma zamanı hatası tetiklenir. Sonuç, değer içermeyen normal bir isteğe bağlı değeri zorla açmak için ünlem işareti yazmanızla tamamen aynıdır.
+
+//Örtük olarak açılmış bir isteğe bağlı değerin nil olup olmadığını, normal bir isteğe bağlı değeri kontrol ettiğiniz şekilde kontrol edebilirsiniz:
+if assumedString != nil {
+    print(assumedString!)
+}
+// "An implicitly unwrapped optional string." yazdırır.
+
+//Tek bir ifadede değerini kontrol etmek ve açmak için, isteğe bağlı bağlama ile örtük olarak açılmış isteğe bağlı bir öğeyi de kullanabilirsiniz:
+if let definiteString = assumedString {
+    print(definiteString)
+}
+// "An implicitly unwrapped optional string." yazdırır.
