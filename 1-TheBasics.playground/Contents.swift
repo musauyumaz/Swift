@@ -125,14 +125,14 @@ let cat = "🐱"; print(cat)
 let minValue = UInt8.min  // UInt8 minimum değer 0
 let maxValue = UInt8.max  // UInt8 maximum değer 255
 
-//MARK: Int
+//MARK: Int(Tamsayı)
 //Çoğu durumda, kodunuzda kullanmak için belirli bir tamsayı boyutu seçmenize gerek yoktur. Swift, mevcut platformun yerel kelime boyutu ile aynı boyutta olan ek bir tamsayı türü olan Int sağlar:
 //32 bit platformda Int, Int32 ile aynı boyuttadır.
 //64 bit platformda Int, Int64 ile aynı boyuttadır.
 
 //Belirli bir tamsayı boyutu ile çalışmanız gerekmedikçe, kodunuzda tamsayı değerleri için her zaman Int kullanın. Bu, kod tutarlılığını ve birlikte çalışabilirliği artırır. 32 bit platformlarda bile Int, -2.147.483.648 ile 2.147.483.647 arasındaki herhangi bir değeri depolayabilir ve birçok tamsayı aralığı için yeterince büyüktür.
 
-//MARK: UInt
+//MARK: UInt(Pozitif Tamsayı)
 //Swift ayrıca, mevcut platformun yerel kelime boyutu ile aynı boyutta olan, işaretsiz bir tamsayı türü olan UInt sağlar:
 //32 bit platformda, UInt, UInt32 ile aynı boyuttadır.
 //64 bit platformda, UInt, UInt64 ile aynı boyuttadır.
@@ -290,7 +290,7 @@ if i2 == 1 {
 //i == 1 karşılaştırmasının sonucu Bool türündedir ve bu nedenle ikinci örnek tür denetiminden geçer. i == 1 gibi karşılaştırmalar Temel İşlemciler bölümünde ele alınmaktadır.
 //Swift'teki diğer tür güvenliği örneklerinde olduğu gibi, bu yaklaşım da kazara hataları önler ve belirli bir kod bölümünün amacının her zaman açık olmasını sağlar.
 
-//MARK: Tuples
+//MARK: Tuples(Bileşik Değerler)
 
 //Tuple'lar birden fazla değeri tek bir bileşik değer halinde gruplandırır. Tuple içindeki değerler herhangi bir türde olabilir ve birbirleriyle aynı türde olmak zorunda değildir.
 
@@ -334,7 +334,7 @@ print("Durum mesajı \(http200Status.description)")
 
 //NOTE: Tuple'lar, ilgili değerlerin basit grupları için kullanışlıdır. Karmaşık veri yapılarının oluşturulması için uygun değildir. Veri yapınız daha karmaşık olacaksa, tuple yerine sınıf veya yapı olarak modelleyin.
 
-//MARK: Optionals
+//MARK: Optionals(İsteğe Bağlı Türler)
 //Değerin bulunmayabileceği durumlarda Optionals kullanırsınız. Optionals iki olasılığı temsil eder: Belirtilen türde bir değer vardır ve bu değere erişmek için Optionals'ı açabilirsiniz ya da hiç değer yoktur.
 
 //Eksik olabilecek bir değer örneği olarak, Swift'in Int türü, String değerini Int değerine dönüştürmeye çalışan bir constructor'a sahiptir. Ancak, yalnızca bazı dizeler tamsayılara dönüştürülebilir. "123" dizesi sayısal değer 123'e dönüştürülebilir, ancak "hello, world" dizesi karşılık gelen bir sayısal değere sahip değildir. Aşağıdaki örnekte, başlatıcı kullanılarak bir String'i Int'e dönüştürmeye çalışılmıştır:
@@ -347,7 +347,7 @@ let convertedNumber: Int? = Int(possibleNumber)
 //İsteğe bağlı bir tür yazmak için, isteğe bağlı türün adının arkasına soru işareti (?) yazarsınız — örneğin, isteğe bağlı Int türünün türü Int? 'dir. İsteğe bağlı Int her zaman bir Int değeri veya hiç değer içermez. Bool veya String değeri gibi başka hiçbir şey içeremez.
 
 
-//MARK: nil
+//MARK: nil(Değer de yok alan da yok)
 //Özel nil değerini atayarak isteğe bağlı bir değişkeni değersiz bir duruma ayarlayabilirsiniz:
 
 var serverResponseCode: Int? = 404
@@ -384,7 +384,7 @@ if convertedNumber1 != nil {
 
 //NOTE: Objective-C'de nil, var olmayan bir nesneye işaret eden bir işaretçidir. Swift'te nil bir işaretçi değildir — belirli bir türdeki değerin yokluğudur. Nesne türleri dışında, herhangi bir türdeki isteğe bağlı değişkenler de nil olarak ayarlanabilir.
 
-//MARK: Optional Binding
+//MARK: Optional Binding(İsteğe Bağlı Değer Bağlama)
 //Optional Binding, bir optional değişkenin bir değer içerip içermediğini öğrenmek ve içerdiği takdirde bu değeri geçici bir sabit veya değişken olarak kullanılabilir hale getirmek için kullanılır. Optional Binding, if, guard ve while deyimleriyle birlikte kullanılarak optional bir değişkenin içindeki bir değeri kontrol etmek ve bu değeri tek bir eylemin parçası olarak bir sabit veya değişkene çıkarmak için kullanılabilir.
 
 //if ifadesi için isteğe bağlı bağlamayı aşağıdaki gibi yazın:
@@ -452,7 +452,7 @@ let greeting = "Hello, " + (name ?? "friend") + "!"
 print(greeting)
 // "Hello, friend!" yazdırır
 
-//MARK: Force Unwrapping()
+//MARK: Force Unwrapping(Zorla Değer Açma)
 //nil, programcı hatası veya bozuk durum gibi kurtarılamaz bir hatayı temsil ettiğinde, isteğe bağlı öğenin adının sonuna ünlem işareti (!) ekleyerek altta yatan değere erişebilirsiniz. Bu, isteğe bağlı öğenin değerini Force Unwrapping olarak bilinir. Nil olmayan bir değeri Force Unwrapping yaptığınızda, sonuç açılmış değeridir. Nil değerini Force Unwrapping yapmak, çalışma zamanı hatasını tetikler.
 
 //! işareti, aslında fatalError(_:file:line:) ifadesinin daha kısa bir yazılış şeklidir. Örneğin, aşağıdaki kod iki eşdeğer yaklaşımı göstermektedir:
@@ -468,7 +468,7 @@ guard let number = convertedNumber2 else {
 }
 //Yukarıdaki kodun her iki versiyonu da convertedNumber2'ın her zaman bir değer içermesine bağlıdır. Bu gereksinimi kodun bir parçası olarak yazmak, yukarıdaki yaklaşımlardan herhangi birini kullanarak, kodunuzun gereksinimin çalışma zamanında doğru olup olmadığını kontrol etmesini sağlar.
 
-//MARK: Implicitly Unwrapped Optionals
+//MARK: Implicitly Unwrapped Optionals(Örtük Olarak Açılmış İsteğe Bağlılar)
 //Yukarıda açıklandığı gibi, Optionals değişkenler bir sabit veya değişkenin "değeri olmamasına" izin verildiğini gösterir. Optionals değişkenler, bir if deyimi ile bir değerin var olup olmadığını kontrol edilebilir ve varsa, Optional binding ile koşullu olarak açığa çıkarılabilir.
 
 //Bazen, bir programın yapısından, bir Optional değişkenin ilk kez ayarlandıktan sonra her zaman bir değere sahip olacağı açıktır. Bu durumlarda, Optional değişkenin değerine her erişildiğinde kontrol etme ve açma gerekliliğini ortadan kaldırmak yararlıdır, çünkü her zaman bir değere sahip olduğu güvenle varsayılabilir.
@@ -505,3 +505,18 @@ if let definiteString = assumedString {
     print(definiteString)
 }
 // "An implicitly unwrapped optional string." yazdırır.
+
+//MARK: Memory Safety(Bellek Güvenliği)
+/* Yukarıda Tür Güvenliği ve Tür Çıkarımında açıklanan tür uyuşmazlıklarını önleyen denetimlere ek olarak, Swift ayrıca geçersiz belleklerle çalışmaya karşı kodu korur. Bu koruma, bellek güvenliği olarak bilinir ve aşağıdaki gereksinimleri içerir:
+ 
+ * Değerler okunmadan önce ayarlanır. Başlatılmamış bellek bölgeleriyle etkileşime karşı koruma, kesin başlatma olarak da bilinir.
+ * Dizilere ve tamponlara yalnızca geçerli dizinlerden erişilir. Sınır dışı erişime karşı koruma, sınır güvenliği olarak da bilinir.
+ * Belleğe yalnızca değerin ömrü boyunca erişilir. Serbest bırakma sonrası kullanım hatalarına karşı koruma, ömür güvenliği olarak da bilinir.
+ * Belleğe erişim, yalnızca kanıtlanabilir şekilde güvenli yollarla çakışır. Eşzamanlı kodda olası veri yarışlarına karşı koruma, iş parçacığı güvenliği olarak da bilinir.
+ */
+
+//Bu garantileri sağlamayan dillerde çalışmışsanız, yukarıdaki listede adı geçen bazı hatalar ve kusurlarla aşina olabilirsiniz. Bu sorunlarla karşılaşmadıysanız sorun yok; Swift'teki güvenli kod bu sorunları önler. Swift'in başlangıç değerlerini nasıl ayarladığını öğrenmek için Başlatma bölümüne,
+
+//Bazen, örneğin dilin veya standart kütüphanenin sınırlamaları nedeniyle, güvenlik sınırları dışında çalışmanız gerekebilir. Bu nedenle Swift, bazı API'lerin güvenli olmayan sürümlerini de sağlar. Adında "unsafe", "unchecked" veya "unmanaged" gibi kelimeler bulunan türleri veya yöntemleri kullandığınızda, güvenlik sorumluluğunu üstlenirsiniz.
+
+//Swift'teki güvenli kodlarda da programın çalışmasını durdurabilecek hatalar ve beklenmedik arızalar meydana gelebilir. Güvenlik, kodunuzun sonuna kadar çalışacağını garanti etmez. Swift, hataları belirtmek ve düzeltmek için çeşitli yollar sunar.Ancak bazı durumlarda, bir hatayı ele almanın tek güvenli yolu yürütmeyi durdurmaktır. Bir hizmetin asla beklenmedik bir şekilde durmamasını garanti etmeniz gerekiyorsa, genel mimarisine hata toleransı ekleyin, böylece herhangi bir bileşeni beklenmedik bir şekilde durduğunda düzeltebilir.
