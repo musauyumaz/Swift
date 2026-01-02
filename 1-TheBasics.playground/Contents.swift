@@ -619,3 +619,16 @@ if age > 10 {
 } else {
     assertionFailure("Bir kişinin yaşı sıfırdan küçük olamaz.")
 }
+
+//MARK: Enforcing Preconditions(Preconditions Uygulama)
+
+//Bir koşul yanlış olma potansiyeli taşıdığında, ancak kodunuzun yürütülmeye devam etmesi için kesinlikle doğru olması gerektiğinde ön koşul kullanın. Örneğin, bir alt simgenin sınırları aşmadığını kontrol etmek veya bir fonksiyona geçerli bir değer aktarıldığını kontrol etmek için ön koşul kullanın.
+
+//Preconditions, precondition(_:_:file:line:) işlevini çağırarak yazılır. Bu işleve, doğru veya yanlış olarak değerlendirilen bir ifade ve koşulun sonucu yanlışsa görüntülenecek bir mesaj geçirilir. Örneğin:
+// Bir alt simgenin uygulanmasında...
+let index = 2
+precondition(index > 0, "Endeks sıfırdan büyük olmalıdır.")
+
+//Ayrıca, bir hata oluştuğunu belirtmek için preconditionFailure(_:file:line:) işlevini de çağırabilirsiniz — örneğin, bir switch'in varsayılan durumu alınmışsa, ancak tüm geçerli giriş verileri switch'in diğer durumlarından biri tarafından işlenmeliydi.
+
+//NOTE: Kontrolsüz modda (-Ounchecked) derlerseniz, Preconditions kontrol edilmez. Derleyici, Preconditions'ların her zaman doğru olduğunu varsayar ve kodunuzu buna göre optimize eder. Ancak, fatalError(_:file:line:) işlevi, optimizasyon ayarlarından bağımsız olarak her zaman yürütmeyi durdurur. Prototip oluşturma ve erken geliştirme aşamalarında fatalError(_:file:line:) işlevini kullanarak, henüz uygulanmamış işlevler için stub'lar oluşturabilirsiniz. Bunun için stub uygulaması olarak fatalError("Unimplemented") yazmanız yeterlidir. Ölümcül hatalar, onaylamalar veya Preconditions'ların aksine asla optimize edilmez, bu nedenle bir stub uygulamasıyla karşılaşıldığında yürütmenin her zaman durduğundan emin olabilirsiniz.
