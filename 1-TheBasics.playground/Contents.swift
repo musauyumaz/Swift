@@ -447,7 +447,23 @@ if let firstNumber = Int("4") {
 //MARK: Providing a Fallback Value(Yedek Değer Atama)
 //Eksik bir değeri işlemenin başka bir yolu da nil-coalescing operatörü (??) kullanarak varsayılan bir değer sağlamaktır. ?? solundaki isteğe bağlı değer nil değilse, bu değer açılır ve kullanılır. Aksi takdirde, ?? sağındaki değer kullanılır. Örneğin, aşağıdaki kod, bir isim belirtilmişse bu isimle birini selamlar ve isim nil ise genel bir selamlama kullanır.
 
-let name: String? = nil
+let name: String? = "nil"
 let greeting = "Hello, " + (name ?? "friend") + "!"
 print(greeting)
 // "Hello, friend!" yazdırır
+
+//MARK: Force Unwrapping()
+//nil, programcı hatası veya bozuk durum gibi kurtarılamaz bir hatayı temsil ettiğinde, isteğe bağlı öğenin adının sonuna ünlem işareti (!) ekleyerek altta yatan değere erişebilirsiniz. Bu, isteğe bağlı öğenin değerini Force Unwrapping olarak bilinir. Nil olmayan bir değeri Force Unwrapping yaptığınızda, sonuç açılmış değeridir. Nil değerini Force Unwrapping yapmak, çalışma zamanı hatasını tetikler.
+
+//! işareti, aslında fatalError(_:file:line:) ifadesinin daha kısa bir yazılış şeklidir. Örneğin, aşağıdaki kod iki eşdeğer yaklaşımı göstermektedir:
+
+let possibleNumber2 = "123"
+let convertedNumber2 = Int(possibleNumber2)
+
+
+let number = convertedNumber2!
+
+guard let number = convertedNumber2 else {
+    fatalError("Sayı geçersiz")
+}
+//Yukarıdaki kodun her iki versiyonu da convertedNumber2'ın her zaman bir değer içermesine bağlıdır. Bu gereksinimi kodun bir parçası olarak yazmak, yukarıdaki yaklaşımlardan herhangi birini kullanarak, kodunuzun gereksinimin çalışma zamanında doğru olup olmadığını kontrol etmesini sağlar.
