@@ -599,3 +599,23 @@ do {
 //Assertions an Preconditions, geçersiz koşulların ortaya çıkma olasılığının düşük olduğu şekilde kodunuzu tasarlamanın yerine geçmez. Ancak, geçerli verileri ve durumu zorlamak için bunları kullanmak, geçersiz bir durum ortaya çıktığında uygulamanızın daha öngörülebilir bir şekilde sonlanmasına neden olur ve sorunun hata ayıklamasını kolaylaştırır. Varsayımlar kontrol edilmediğinde, başka bir yerdeki kod görünür şekilde başarısız olmaya başladığında ve kullanıcı verileri sessizce bozulduktan sonra bu tür bir sorunu fark etmeyebilirsiniz. Geçersiz bir durum algılandığında yürütmeyi durdurmak, bu geçersiz durumun neden olduğu hasarı sınırlamaya da yardımcı olur.
 
 //Assertions an Preconditions arasındaki fark, bunların ne zaman kontrol edildiğidir: Assertion'lar yalnızca hata ayıklama derlemelerinde kontrol edilir, ancak Preconditions hem hata ayıklama hem de üretim derlemelerinde kontrol edilir. Üretim derlemelerinde, bir assertion içindeki koşul değerlendirilmez. Bu, üretimdeki performansı etkilemeden, geliştirme sürecinde istediğiniz kadar assertion kullanabileceğiniz anlamına gelir.
+
+//MARK: Debugging with Assertions(Assertions ile Hata Ayıklama)
+
+//Assertions, Swift standart kütüphanesinden assert(_:_:file:line:) işlevini çağırarak yazılır. Bu işleve, true veya false olarak değerlendirilen bir ifade ve koşulun sonucu false ise görüntülenecek bir mesaj aktarılır. Örneğin:
+let age = -3
+assert(age >= 0, "Bir kişinin yaşı sıfırdan küçük olamaz.")
+// Bu assertion başarısız olur çünkü -3 >= 0 değildir.
+//Bu örnekte, age >= 0 true olarak değerlendirilirse, yani age değeri negatif değilse kod yürütülmeye devam eder. Yukarıdaki kodda olduğu gibi age değeri negatifse, age >= 0 false olarak değerlendirilir ve assertion başarısız olur ve uygulama sonlandırılır.
+
+//Assertion mesajını atlayabilirsiniz — örneğin, mesajın koşulu düz metin olarak tekrarlaması durumunda.
+
+assert(age >= 0)
+//Kod zaten koşulu kontrol ediyorsa, assertionFailure(_:file:line:) işlevini kullanarak bir assertion'ın başarısız olduğunu belirtirsiniz. Örneğin:
+if age > 10 {
+    print("Roller coaster veya dönme dolaba binebilirsiniz.")
+} else if age >= 0 {
+    print("Dönme dolaba binebilirsiniz.")
+} else {
+    assertionFailure("Bir kişinin yaşı sıfırdan küçük olamaz.")
+}
