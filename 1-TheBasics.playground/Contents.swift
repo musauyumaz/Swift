@@ -520,3 +520,72 @@ if let definiteString = assumedString {
 //Bazen, örneğin dilin veya standart kütüphanenin sınırlamaları nedeniyle, güvenlik sınırları dışında çalışmanız gerekebilir. Bu nedenle Swift, bazı API'lerin güvenli olmayan sürümlerini de sağlar. Adında "unsafe", "unchecked" veya "unmanaged" gibi kelimeler bulunan türleri veya yöntemleri kullandığınızda, güvenlik sorumluluğunu üstlenirsiniz.
 
 //Swift'teki güvenli kodlarda da programın çalışmasını durdurabilecek hatalar ve beklenmedik arızalar meydana gelebilir. Güvenlik, kodunuzun sonuna kadar çalışacağını garanti etmez. Swift, hataları belirtmek ve düzeltmek için çeşitli yollar sunar.Ancak bazı durumlarda, bir hatayı ele almanın tek güvenli yolu yürütmeyi durdurmaktır. Bir hizmetin asla beklenmedik bir şekilde durmamasını garanti etmeniz gerekiyorsa, genel mimarisine hata toleransı ekleyin, böylece herhangi bir bileşeni beklenmedik bir şekilde durduğunda düzeltebilir.
+
+//MARK: Error Handling(Hata İşleme)
+//Hata işlemeyi, programınızın yürütme sırasında karşılaşabileceği hata durumlarına yanıt vermek için kullanırsınız.
+
+//Bir fonksiyonun başarısını veya başarısızlığını iletmek için bir değerin varlığını veya yokluğunu kullanabilen isteğe bağlı öğelerin aksine, hata işleme, başarısızlığın altında yatan nedeni belirlemenize ve gerekirse hatayı programınızın başka bir bölümüne yaymanıza olanak tanır.
+
+//Bir işlev bir hata durumuyla karşılaştığında, bir hata atar. Bu işlevin çağıranı, hatayı yakalayabilir ve uygun şekilde yanıt verebilir.
+
+func canThrowAnError() throws {
+    // bu işlev bir hata atabilir veya atmayabilir
+}
+//Bir işlev, bildirimine throws anahtar sözcüğünü ekleyerek hata atabileceğini belirtir. Hata atabilecek bir işlevi çağırdığınızda, ifadenin başına try anahtar sözcüğünü ekleyin.
+
+//Swift, hataları bir catch cümlesi tarafından işlenene kadar mevcut kapsamlarının dışına otomatik olarak yayar.
+
+do {
+    try canThrowAnError()
+    // hata atılmadı
+} catch {
+    // hata atıldı
+}
+
+//Bir do ifadesi, hataların bir veya daha fazla catch cümlesine yayılmasını sağlayan yeni bir kapsayıcı kapsam oluşturur.
+
+//Hata işleme özelliğinin farklı hata koşullarına yanıt vermek için nasıl kullanılabileceğine dair bir örnek aşağıda verilmiştir:
+
+enum SandwichError: Error {
+    case outOfCleanDishes
+    case missingIngredients([String])
+}
+
+func makeASandwich() throws {
+    let hasCleanDishes = Bool.random()
+    if !hasCleanDishes {
+        throw SandwichError.outOfCleanDishes
+    }
+    
+    let hasAllIngredients = Bool.random()
+    if !hasAllIngredients {
+        throw SandwichError.missingIngredients(["ekmek", "peynir", "domates"])
+    }
+    print("Sandwich yapıldı!")
+}
+
+func eatASandwich() {
+    print("Sandwich yenildi!")
+}
+
+func washDishes() {
+    print("Bulaşıklar yıkandı!")
+}
+
+func buyGroceries(_ ingredients: [String]) {
+    print("Market alışverişi yapıldı: \(ingredients.joined(separator: ", "))")
+}
+
+do {
+    try makeASandwich()
+    eatASandwich()
+} catch SandwichError.outOfCleanDishes {
+    washDishes()
+} catch SandwichError.missingIngredients(let ingredients) {
+    buyGroceries(ingredients)
+}
+
+//Bu örnekte, temiz tabak yoksa veya herhangi bir malzeme eksikse makeASandwich() işlevi bir hata atar. makeASandwich() bir hata atabileceğinden, işlev çağrısı bir try ifadesiyle sarılır. İşlev çağrısını bir do deyimiyle sarmak, atılan tüm hataların sağlanan catch cümlelerine yayılmasını sağlar.
+
+//Hata atılmazsa, eatASandwich() işlevi çağrılır. Bir hata verilirse ve bu hata SandwichError.outOfCleanDishes durumuyla eşleşirse, washDishes() işlevi çağrılır. Bir hata verilirse ve bu hata SandwichError.missingIngredients durumuyla eşleşirse, buyGroceries(_:) işlevi, catch kalıbı tarafından yakalanan ilişkili [String] değeriyle çağrılır.
+
