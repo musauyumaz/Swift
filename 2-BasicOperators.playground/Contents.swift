@@ -31,3 +31,21 @@ let (x, y) = (1, 2)
     // Bu geçerli değildir, çünkü x = y bir değer döndürmez.
 //}
 //Bu özellik, eşittir operatörü (==) kullanılması gerektiğinde atama operatörünün (=) yanlışlıkla kullanılmasını önler. Swift, if x = y ifadesini geçersiz kılarak kodunuzda bu tür hataları önlemenize yardımcı olur.
+
+//MARK: Arithmetic Operators(Aritmetik Operatörler)
+//Swift, tüm sayı türleri için dört standart aritmetik işlemciyi destekler:
+//Toplama (+)
+//Çıkarma (-)
+//Çarpma (*)
+//Bölme (/)
+
+1 + 2       // 3'e eşittir
+5 - 3       // 2'ye eşittir
+2 * 3       // 6'ya eşittir
+10.0 / 2.5  // 4.0'a eşittir
+//C ve Objective-C'deki aritmetik operatörlerin aksine, Swift aritmetik operatörleri varsayılan olarak değerlerin taşmasına izin vermez. Swift'in taşma operatörlerini (a &+ b gibi) kullanarak değer taşma davranışını etkinleştirebilirsiniz. Taşma Operatörleri bölümüne bakın.
+
+//Toplama operatörü, String birleştirme için de desteklenir:
+
+"hello, " + "world"  // "hello, world"e eşittir
+
