@@ -281,8 +281,23 @@ if !allowedEntry {
 let enteredDoorCode = true
 let passedRetinaScan = false
 if enteredDoorCode && passedRetinaScan {
-    print("Hoş geldiniz!")
+    print("Welcome!")
 } else {
-    print("ERİŞİM REDDEDİLDİ")
+    print("ACCESS DENIED")
 }
-// "ERİŞİM REDDEDİLDİ" yazdırır.
+// "ACCESS DENIED" yazdırılır
+
+//MARK: Logical OR Operator(Mantıksal OR Operatörü)
+//Mantıksal OR operatörü (a || b), iki bitişik boru karakterinden oluşan bir infiks operatörüdür. Bu operatörü, iki değerden yalnızca birinin doğru olması durumunda tüm ifadenin doğru olması gereken mantıksal ifadeler oluşturmak için kullanırsınız.
+
+//Yukarıdaki mantıksal AND operatörü gibi, mantıksal OR operatörü de ifadeleri değerlendirmek için kısa devre değerlendirmesini kullanır. Mantıksal OR ifadesinin sol tarafı doğruysa, sağ taraf değerlendirilmez, çünkü genel ifadenin sonucunu değiştiremez.
+
+//Aşağıdaki örnekte, ilk Boolean değeri (hasDoorKey) yanlış, ancak ikinci değer (knowsOverridePassword) doğrudur. Bir değer doğru olduğu için, genel ifade de doğru olarak değerlendirilir ve erişim izin verilir:
+let hasDoorKey = false
+let knowsOverridePassword = true
+if hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// "Welcome!" yazdırır.
