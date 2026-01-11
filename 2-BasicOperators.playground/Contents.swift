@@ -94,3 +94,44 @@ a1 += 2
 a1 += 2 //ifadesi, a = a + 2 ifadesinin kısaltmasıdır. Etkili olarak, toplama ve atama, her iki görevi aynı anda gerçekleştiren tek bir operatörde birleştirilir.
 
 //NOTE: Bileşik atama operatörleri bir değer döndürmez. Örneğin, let b = a += 2 yazamazsınız.
+
+//MARK: Comparison Operators(Karşılaştırma Operatörleri)
+//Swift aşağıdaki karşılaştırma operatörlerini destekler:
+//Eşit (a == b)
+//Eşit değil (a != b)
+//Büyük (a > b)
+//Küçük (a < b)
+//Büyük veya eşit (a >= b)
+//Küçük veya eşit (a <= b)
+
+//NOTE: Swift ayrıca, iki nesne referansının aynı nesne örneğine atıfta bulunup bulunmadığını test etmek için kullandığınız iki özdeşlik operatörü (=== ve !==) sağlar. Daha fazla bilgi için Özdeşlik Operatörleri bölümüne bakın.
+
+//Her karşılaştırma operatörü, ifadenin doğru olup olmadığını belirtmek için bir Bool değeri döndürür:
+1 == 1   // 1, 1'e eşit olduğu için doğru
+2 != 1   // 2, 1'e eşit olmadığı için doğru
+2 > 1    // 2, 1'den büyük olduğu için doğru
+1 < 2    // 1, 2'den küçük olduğu için doğru
+1 >= 1   // 1, 1'den büyük veya ona eşit olduğu için doğru
+2 <= 1   // 2, 1'den küçük veya ona eşit olmadığı için yanlış
+//Karşılaştırma operatörleri genellikle if ifadesi gibi koşullu ifadelerde kullanılır:
+
+let name = "world"
+if name == "world" {
+    print("hello, world")
+} else {
+    print("I'm sorry \(name), but I don't recognize you")
+}
+// "hello, world" yazdırır, çünkü name gerçekten "world" ile eşittir.
+//Aynı türde ve aynı sayıda değere sahip iki tuple'ı karşılaştırabilirsiniz. Tuple'lar, karşılaştırma eşit olmayan iki değer bulana kadar soldan sağa, teker teker karşılaştırılır. Bu iki değer karşılaştırılır ve bu karşılaştırmanın sonucu, tuple karşılaştırmasının genel sonucunu belirler. Tüm öğeler eşitse, tuple'lar da eşittir. Örneğin:
+
+(1, "zebra") < (2, "apple")   // 1, 2'den küçük olduğu için doğru; "zebra" ve "apple" karşılaştırılmaz
+(3, "apple") < (3, "bird")    // 3, 3'e eşit olduğu ve "apple" "bird"den küçük olduğu için doğru
+(4, "dog") == (4, "dog")      // doğru çünkü 4, 4'e eşittir ve "dog", "dog"a eşittir
+//Yukarıdaki örnekte, ilk satırda soldan sağa karşılaştırma davranışını görebilirsiniz. 1, 2'den küçük olduğu için, (1, "zebra") tuple'lardaki diğer değerlerden bağımsız olarak (2, "apple")'dan küçük kabul edilir. "zebra"nın "apple"dan küçük olmaması önemli değildir, çünkü karşılaştırma zaten tuple'ların ilk öğeleri tarafından belirlenmiştir. Ancak, tuple'ların ilk öğeleri aynı olduğunda, ikinci öğeleri karşılaştırılır — bu, ikinci ve üçüncü satırda olan şeydir.
+
+//Tuple'lar, yalnızca operatör ilgili tuple'lardaki her değere uygulanabiliyorsa, belirli bir operatörle karşılaştırılabilir. Örneğin, aşağıdaki kodda gösterildiği gibi, hem String hem de Int değerleri < operatörü kullanılarak karşılaştırılabileceğinden, (String, Int) türündeki iki tuple'ı karşılaştırabilirsiniz. Buna karşılık, (String, Bool) türündeki iki tuple, < operatörü Bool değerlerine uygulanamadığı için < operatörüyle karşılaştırılamaz.
+
+("blue", -1) < ("purple", 1)        // Tamam: Değer true olarak değerlendirilir.
+//("blue", false) < ("purple", true)  // Hata: Boolean değerlerini karşılaştırmak için < kullanılamaz.
+
+//NOTE: Swift standart kütüphanesi, yedi elemandan az olan tuple'lar için tuple karşılaştırma operatörleri içerir. Yedi veya daha fazla eleman içeren tuple'ları karşılaştırmak için karşılaştırma operatörlerini kendiniz uygulamalısınız.
