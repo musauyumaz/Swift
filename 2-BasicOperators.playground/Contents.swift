@@ -84,3 +84,13 @@ let plusThree = -minusThree   // plusThree, 3'e eşittir veya "eksi eksi üç" a
 let minusSix = -6
 let alsoMinusSix = +minusSix  // alsoMinusSix, -6'ya eşittir
 //Tekli artı işleci aslında hiçbir şey yapmasa da, negatif sayılar için tekli eksi işleci kullanırken, pozitif sayılar için kodunuzda simetri sağlamak amacıyla kullanabilirsiniz.
+
+//MARK: Compound Assignment Operators(Bileşik Atama Operatörleri)
+//C gibi, Swift de atama (=) ile başka bir işlemi birleştiren bileşik atama operatörleri sağlar. Bir örnek, toplama atama operatörüdür (+=):
+
+var a1 = 1
+a1 += 2
+// a artık 3'e eşittir
+a1 += 2 //ifadesi, a = a + 2 ifadesinin kısaltmasıdır. Etkili olarak, toplama ve atama, her iki görevi aynı anda gerçekleştiren tek bir operatörde birleştirilir.
+
+//NOTE: Bileşik atama operatörleri bir değer döndürmez. Örneğin, let b = a += 2 yazamazsınız.
