@@ -71,3 +71,10 @@ let (x, y) = (1, 2)
 //Bu da -1 kalan değeri verir.
 //b'nin negatif değerleri için b'nin işareti göz ardı edilir. Bu, a % b ve a % -b'nin her zaman aynı sonucu verdiği anlamına gelir.
 9 % -4 // 1'e eşittir.
+
+//MARK: Unary Minus Operator(Tekil - Operatörü)
+//Sayısal bir değerin işareti, tekli eksi operatörü olarak bilinen önekli - kullanılarak değiştirilebilir:
+let three = 3
+let minusThree = -three       // minusThree, -3'e eşittir.
+let plusThree = -minusThree   // plusThree, 3'e eşittir veya "eksi eksi üç" anlamına gelir.
+//Tekli eksi operatörü (-) üzerinde işlem yaptığı değerin hemen önüne, boşluk bırakılmadan eklenir.
