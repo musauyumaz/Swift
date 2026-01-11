@@ -170,12 +170,12 @@ if hasHeader2 {
 //Nil-birleştirme operatörü (a ?? b), bir değer içeriyorsa isteğe bağlı a'yı açar veya a nil ise varsayılan değer b'yi döndürür. a ifadesi her zaman isteğe bağlı bir türdür. b ifadesi, a içinde depolanan türle eşleşmelidir.
 
 //Nil birleştirme operatörü, aşağıdaki kodun kısaltmasıdır:
-var a11:String? = ""
-var b11 = ""
-var c = a11 != nil ? a11! : b11
-//Yukarıdaki kod, a nil değilse a içindeki değere erişmek ve aksi takdirde b değerini döndürmek için üçlü koşul operatörünü ve zorla açma (a!) işlemini kullanır. Nil birleştirme operatörü, bu koşullu kontrol ve açma işlemini kısa ve okunabilir bir biçimde kapsüllemek için daha zarif bir yol sağlar.
+var a11:String?
+var b11 = "b11"
+a11 != nil ? a11! : b11
+//Yukarıdaki kod, a11 nil değilse a11 içindeki değere erişmek ve aksi takdirde b11 değerini döndürmek için üçlü koşul operatörünü ve zorla açma (a11!) işlemini kullanır. Nil birleştirme operatörü, bu koşullu kontrol ve açma işlemini kısa ve okunabilir bir biçimde kapsüllemek için daha zarif bir yol sağlar.
 
-//NOTE: a'nın değeri nil değilse, b'nin değeri değerlendirilmez. Bu, kısa devre değerlendirme olarak bilinir.
+//NOTE: a11'nın değeri nil değilse, b11'nin değeri değerlendirilmez. Bu, kısa devre değerlendirme olarak bilinir.
 
 //Aşağıdaki örnek, varsayılan renk adı ile isteğe bağlı kullanıcı tanımlı renk adı arasında seçim yapmak için nil birleştirme operatörünü kullanır:
 let defaultColorName = "red"
