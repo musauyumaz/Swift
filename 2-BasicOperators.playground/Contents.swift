@@ -316,3 +316,14 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 //enteredDoorCode, passedRetinaScan ve hasDoorKey değerlerine göre, ilk iki alt ifade yanlıştır. Ancak, acil durum geçersiz kılma şifresi biliniyor, bu nedenle genel bileşik ifade hala doğru olarak değerlendirilir.
 
 //NOTE: Swift mantık operatörleri && ve || soldan birleşimlidir, yani birden fazla mantık operatörü içeren bileşik ifadeler en soldaki alt ifadeyi önce değerlendirir.
+
+//MARK: Explicit Parantheses(Açık Parantezler)
+//Karmaşık bir ifadenin amacını daha kolay okunabilir hale getirmek için, kesinlikle gerekli olmasa da parantez eklemek bazen yararlı olabilir. Yukarıdaki kapı erişimi örneğinde, bileşik ifadenin ilk kısmının etrafına parantez eklemek, ifadenin amacını açık hale getirmek için yararlıdır:
+if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "Welcome!"
+
+//Parantezler, ilk iki değerin genel mantıkta ayrı bir olası durumun parçası olarak kabul edildiğini açıkça gösterir. Bileşik ifadenin çıktısı değişmez, ancak genel amaç okuyucuya daha açık hale gelir. Okunabilirlik her zaman kısalığa tercih edilir; amacınızı netleştirmek için yardımcı olacak yerlerde parantez kullanın.
