@@ -78,3 +78,9 @@ let three = 3
 let minusThree = -three       // minusThree, -3'e eşittir.
 let plusThree = -minusThree   // plusThree, 3'e eşittir veya "eksi eksi üç" anlamına gelir.
 //Tekli eksi operatörü (-) üzerinde işlem yaptığı değerin hemen önüne, boşluk bırakılmadan eklenir.
+
+//MARK: Unary Plus Operator(Tekil + Opeatörü)
+//Tekli artı işleci (+) üzerinde işlem yaptığı değeri herhangi bir değişiklik yapmadan döndürür:
+let minusSix = -6
+let alsoMinusSix = +minusSix  // alsoMinusSix, -6'ya eşittir
+//Tekli artı işleci aslında hiçbir şey yapmasa da, negatif sayılar için tekli eksi işleci kullanırken, pozitif sayılar için kodunuzda simetri sağlamak amacıyla kullanabilirsiniz.
