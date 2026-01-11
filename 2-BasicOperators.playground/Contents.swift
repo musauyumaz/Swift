@@ -301,3 +301,18 @@ if hasDoorKey || knowsOverridePassword {
     print("ACCESS DENIED")
 }
 // "Welcome!" yazdırır.
+
+//MARK: Combining Logical Operators(Mantıksal Operatörleri Birleştirme)
+//Birden fazla mantıksal operatörü birleştirerek daha uzun bileşik ifadeler oluşturabilirsiniz:
+if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Welcome! yazdırır
+//Bu örnekte, daha uzun bir bileşik ifade oluşturmak için birden fazla && ve || operatörü kullanılmıştır. Ancak, && ve || operatörleri yine de yalnızca iki değer üzerinde işlem yapar, bu nedenle bu aslında birbirine zincirlenmiş üç küçük ifadedir. Örnek şu şekilde okunabilir:
+
+//Doğru kapı kodunu girip retina taramasını geçersek, geçerli bir kapı anahtarına sahipsek veya acil durum geçersiz kılma şifresini biliyorsak, erişime izin verin.
+//enteredDoorCode, passedRetinaScan ve hasDoorKey değerlerine göre, ilk iki alt ifade yanlıştır. Ancak, acil durum geçersiz kılma şifresi biliniyor, bu nedenle genel bileşik ifade hala doğru olarak değerlendirilir.
+
+//NOTE: Swift mantık operatörleri && ve || soldan birleşimlidir, yani birden fazla mantık operatörü içeren bileşik ifadeler en soldaki alt ifadeyi önce değerlendirir.
