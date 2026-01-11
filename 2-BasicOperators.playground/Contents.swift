@@ -190,3 +190,19 @@ var colorNameToUse = userDefinedColorName ?? defaultColorName
 userDefinedColorName = "green"
 colorNameToUse = userDefinedColorName ?? defaultColorName
 // userDefinedColorName nil olmadığı için colorNameToUse "green" olarak ayarlanır
+
+//MARK: Range Operators(Aralık Operatörleri)
+//Swift, bir değer aralığını ifade etmek için kullanılan kısayollar olan birkaç aralık operatörü içerir.
+
+//MARK: Closed Range Operator(Kapalı Aralık Operatörü)
+//Kapalı aralık operatörü (a...b), a'dan b'ye kadar uzanan ve a ve b değerlerini içeren bir aralığı tanımlar. a değerinin b değerinden büyük olmaması gerekir.
+
+//Kapalı aralık operatörü, for-in döngüsü gibi tüm değerlerin kullanılmasını istediğiniz bir aralık üzerinde yineleme yaparken kullanışlıdır:
+for index in 1...5 {
+    print("\(index) çarpı 5, \(index * 5)")
+}
+// 1 çarpı 5, 5'tir.
+// 2 çarpı 5, 10'dur.
+// 3 çarpı 5, 15'tir.
+// 4 çarpı 5, 20'dir.
+// 5 çarpı 5, 25'tir.
