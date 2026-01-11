@@ -222,3 +222,33 @@ for i in 0..<count {
 // Kişi 3'ün adı Brian
 // Kişi 4'ün adı Jack
 //Dizinin dört öğe içerdiğini, ancak 0..<count'un yarım açık aralık olduğu için yalnızca 3'e kadar (dizideki son öğenin dizini) saydığını unutmayın.
+
+//MARK: One-Sided Ranges(Tek Taraflı Aralıklar)
+//Kapalı aralık operatörü, bir yönde mümkün olduğunca devam eden aralıklar için alternatif bir biçime sahiptir — örneğin, bir dizinin 2. indeksinden dizinin sonuna kadar tüm öğelerini içeren bir aralık. Bu durumlarda, aralık operatörünün bir tarafındaki değeri atlayabilirsiniz. Bu tür aralıklar, operatörün yalnızca bir tarafında değer olduğu için tek taraflı aralık olarak adlandırılır. Örneğin:
+
+for name in names[2...] {
+    print(name)
+}
+// Brian
+// Jack
+
+
+for name in names[...2] {
+    print(name)
+}
+// Anna
+// Alex
+// Brian
+//Yarı açık aralık operatörü de sadece son değeriyle yazılan tek taraflı bir biçime sahiptir. Her iki tarafa da bir değer eklediğinizde olduğu gibi, son değer aralığın bir parçası değildir. Örneğin:
+for name in names[..<2] {
+    print(name)
+}
+// Anna
+// Alex
+//Tek taraflı aralıklar, sadece alt simgelerde değil, başka bağlamlarda da kullanılabilir. İlk değeri atlayan tek taraflı bir aralık üzerinde yineleme yapamazsınız, çünkü yinelemenin nereden başlaması gerektiği belli değildir. Son değerini atlayan tek taraflı bir aralık üzerinde yineleme yapabilirsiniz; ancak aralık sonsuza kadar devam ettiğinden, döngü için açık bir son koşul eklediğinizden emin olun. Aşağıdaki kodda gösterildiği gibi, tek taraflı bir aralığın belirli bir değeri içerip içermediğini de kontrol edebilirsiniz.
+
+let range = ...5
+range.contains(7)   // false
+range.contains(4)   // true
+range.contains(-1)  // true
+range.contains(-1521545454)//true
