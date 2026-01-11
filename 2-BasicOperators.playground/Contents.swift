@@ -252,3 +252,22 @@ range.contains(7)   // false
 range.contains(4)   // true
 range.contains(-1)  // true
 range.contains(-1521545454)//true
+
+//MARK: Logical Operators(Mantıksal Operatörler)
+//Mantıksal operatörler, Boolean mantık değerleri true ve false'ı değiştirir veya birleştirir. Swift, C tabanlı dillerde bulunan üç standart mantıksal operatörü destekler:
+//Mantıksal NOT (!a)
+//Mantıksal AND (a && b)
+//Mantıksal OR (a || b)
+
+//MARK: Logical NOT Operator(Mantıksal NOT Operatörü)
+//Mantıksal NOT işleci (!a), Boolean değerini tersine çevirir, böylece true false olur ve false true olur.
+//Mantıksal NOT işleci bir önek işlemcisidir ve üzerinde işlem yaptığı değerin hemen önünde, boşluk bırakılmadan görünür. Aşağıdaki örnekte görüldüğü gibi "not a" olarak okunabilir:
+
+let allowedEntry = false
+if !allowedEntry {
+    print("ACCESS DENIED")
+}
+// "ACCESS DENIED" yazdırır.
+//if !allowedEntry ifadesi "erişim izni yoksa" olarak okunabilir. Sonraki satır, yalnızca "erişim izni yoksa" doğruysa, yani allowedEntry yanlışsa yürütülür.
+
+//Bu örnekte olduğu gibi, Boolean sabitleri ve değişken adlarının dikkatli seçilmesi, çift olumsuzluklardan veya kafa karıştırıcı mantık ifadelerinden kaçınarak kodun okunabilir ve özlü kalmasına yardımcı olabilir.
