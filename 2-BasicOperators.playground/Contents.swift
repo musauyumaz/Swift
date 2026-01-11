@@ -135,3 +135,33 @@ if name == "world" {
 //("blue", false) < ("purple", true)  // Hata: Boolean değerlerini karşılaştırmak için < kullanılamaz.
 
 //NOTE: Swift standart kütüphanesi, yedi elemandan az olan tuple'lar için tuple karşılaştırma operatörleri içerir. Yedi veya daha fazla eleman içeren tuple'ları karşılaştırmak için karşılaştırma operatörlerini kendiniz uygulamalısınız.
+
+//MARK: Ternary Conditional Operator(3 Koşullu İşleç)
+//Ternary Operatörü, soru ? cevap1 : cevap2 biçiminde olan üç parçalı özel bir işleçtir. Soru ifadesinin doğru veya yanlış olmasına bağlı olarak iki ifadeden birini değerlendirmek için kullanılan bir kısayoldur. Soru ifadesi doğruysa, cevap1 ifadesini değerlendirir ve değerini döndürür; aksi takdirde, cevap2 ifadesini değerlendirir ve değerini döndürür.
+
+//Ternary operatör, aşağıdaki kodun kısayoludur:
+//if soru {
+//    cevap1
+//} else {
+//    cevap2
+//}
+
+//Aşağıda, bir tablo satırının yüksekliğini hesaplayan bir örnek verilmiştir. Satırın başlığı varsa, satır yüksekliği içerik yüksekliğinden 50 puan daha yüksek olmalı, satırın başlığı yoksa 20 puan daha yüksek olmalıdır:
+let contentHeight = 40
+let hasHeader = true
+let rowHeight = contentHeight + (hasHeader ? 50 : 20)
+// rowHeight 90'a eşittir
+//Yukarıdaki örnek, aşağıdaki kodun kısaltmasıdır:
+
+let contentHeight2 = 40
+let hasHeader2 = true
+let rowHeight2: Int
+if hasHeader2 {
+    rowHeight2 = contentHeight2 + 50
+} else {
+    rowHeight2 = contentHeight2 + 20
+}
+// rowHeight 90'a eşittir
+//İlk örnekte Ternary operatörünün kullanılması, rowHeight'ın tek bir kod satırında doğru değere ayarlanabileceği anlamına gelir; bu, ikinci örnekte kullanılan koddan daha kısadır.
+
+//Ternary operatörü, iki ifadeden hangisinin dikkate alınacağına karar vermek için etkili bir kısaltma sağlar. Ancak, Ternary operatörünü dikkatli kullanın. Aşırı kullanıldığında, kısalığı kodun okunmasını zorlaştırabilir. Ternary operatörünün birden fazla örneğini tek bir bileşik ifadede birleştirmeyin.
