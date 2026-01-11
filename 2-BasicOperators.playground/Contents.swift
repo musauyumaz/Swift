@@ -271,3 +271,18 @@ if !allowedEntry {
 //if !allowedEntry ifadesi "erişim izni yoksa" olarak okunabilir. Sonraki satır, yalnızca "erişim izni yoksa" doğruysa, yani allowedEntry yanlışsa yürütülür.
 
 //Bu örnekte olduğu gibi, Boolean sabitleri ve değişken adlarının dikkatli seçilmesi, çift olumsuzluklardan veya kafa karıştırıcı mantık ifadelerinden kaçınarak kodun okunabilir ve özlü kalmasına yardımcı olabilir.
+
+//MARK: Logical AND Operator(Mantıksal AND Operatörü)
+//Mantıksal AND operatörü (a && b), genel ifadenin de doğru olması için her iki değerin de doğru olması gereken mantıksal ifadeler oluşturur.
+
+//Herhangi bir değer yanlışsa, genel ifade de yanlış olacaktır. Aslında, ilk değer yanlışsa, ikinci değer değerlendirilmeyecektir bile, çünkü genel ifadenin doğru olmasına imkan yoktur. Bu, kısa devre değerlendirme olarak bilinir.
+
+//Bu örnekte iki Bool değeri ele alınır ve her iki değer de doğruysa erişim izni verilir:
+let enteredDoorCode = true
+let passedRetinaScan = false
+if enteredDoorCode && passedRetinaScan {
+    print("Hoş geldiniz!")
+} else {
+    print("ERİŞİM REDDEDİLDİ")
+}
+// "ERİŞİM REDDEDİLDİ" yazdırır.
