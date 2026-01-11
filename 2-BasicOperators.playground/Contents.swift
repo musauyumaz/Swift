@@ -206,3 +206,19 @@ for index in 1...5 {
 // 3 çarpı 5, 15'tir.
 // 4 çarpı 5, 20'dir.
 // 5 çarpı 5, 25'tir.
+
+//MARK: Half-Open Range Operator(Yarı Açık Aralık Operatörü)
+//Yarı açık aralık operatörü (a..<b), a'dan b'ye kadar uzanan, ancak b'yi içermeyen bir aralığı tanımlar. İlk değeri içerdiği, ancak son değeri içermediği için yarı açık olarak adlandırılır. Kapalı aralık operatöründe olduğu gibi, a'nın değeri b'den büyük olmamalıdır. a'nın değeri b'ye eşitse, sonuç aralık boş olacaktır.
+
+//Yarı açık aralıklar, diziler gibi sıfır tabanlı listelerle çalışırken, listenin uzunluğunu (dahil olmamak üzere) saymak için özellikle yararlıdır:
+
+let names = ["Anna", "Alex", "Brian", "Jack"]
+let count = names.count
+for i in 0..<count {
+    print("Person \(i + 1) is called \(names[i])")
+}
+// Kişi 1'in adı Anna
+// Kişi 2'nin adı Alex
+// Kişi 3'ün adı Brian
+// Kişi 4'ün adı Jack
+//Dizinin dört öğe içerdiğini, ancak 0..<count'un yarım açık aralık olduğu için yalnızca 3'e kadar (dizideki son öğenin dizini) saydığını unutmayın.
