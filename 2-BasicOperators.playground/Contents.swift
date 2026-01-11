@@ -49,3 +49,25 @@ let (x, y) = (1, 2)
 
 "hello, " + "world"  // "hello, world"e eşittir
 
+//MARK: Remainder Operator(Mod Operatörü)
+//Mod alma operatörü (a % b), a'nın içine kaç tane b'nin sığacağını hesaplar ve kalan değeri (kalan olarak bilinir) döndürür.
+
+//NOTE: Mod alma operatörü (%) diğer dillerde mod alma işleci olarak da bilinir. Ancak, Swift'te negatif sayılar için davranışı, tam anlamıyla bir mod alma işlemi değil, bir kalan işlemi olduğu anlamına gelir.
+
+//Kalan operatörü şu şekilde çalışır. 9 % 4'ü hesaplamak için, önce 9'un içine kaç tane 4 sığacağını hesaplarsınız:
+//9'un içine iki tane 4 sığar ve kalan 1'dir
+//Swift'te bu şöyle yazılır:
+9 % 4    // eşittir 1
+//% b'nin cevabını belirlemek için, % operatörü aşağıdaki denklemi hesaplar ve çıktı olarak kalanı döndürür:
+//a = (b x bir çarpan) + kalan
+//burada çarpan, a'ya sığabilecek b'nin en büyük kat sayısıdır.
+//Bu denkleme 9 ve 4'ü eklediğimizde şu sonuç elde edilir:
+//9 = (4 x 2) + 1
+
+//A'nın negatif bir değeri için kalanı hesaplarken de aynı yöntem uygulanır:
+-9 % 4   // -1'e eşittir
+//-9 ve 4 değerlerini denkleme yerleştirdiğimizde şu sonuç elde edilir:
+//-9 = (4 x -2) + -1
+//Bu da -1 kalan değeri verir.
+//b'nin negatif değerleri için b'nin işareti göz ardı edilir. Bu, a % b ve a % -b'nin her zaman aynı sonucu verdiği anlamına gelir.
+9 % -4 // 1'e eşittir.
